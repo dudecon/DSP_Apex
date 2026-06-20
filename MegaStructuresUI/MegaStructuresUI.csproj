@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyName>DysonHarvesterPlaceholder</AssemblyName>
+    <AssemblyName>MegaStructuresUI</AssemblyName>
     <Version>0.0.1</Version>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -12,7 +12,7 @@
 
   <PropertyGroup>
     <!-- Change this to point to your DSP BepInEx/plugins folder if desired -->
-    <DSPPluginsPath>C:\Program Files (x86)\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\\DysonHarvesterPlaceholder</DSPPluginsPath>
+    <DSPPluginsPath>C:\Program Files (x86)\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\MegaStructuresUI</DSPPluginsPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -59,11 +59,6 @@
       <HintPath>..\references\0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
-    <!-- Optional but often useful -->
-    <!-- <Reference Include="BepInEx.Harmony">
-      <HintPath>..\references\BepInEx.Harmony.dll</HintPath>
-      <Private>false</Private>
-    </Reference> -->
   </ItemGroup>
 
   <Target Name="CopyToPlugins" AfterTargets="Build">
@@ -73,4 +68,3 @@
   </Target>
 
 </Project>
-
