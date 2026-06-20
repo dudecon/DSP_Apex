@@ -1,0 +1,23 @@
+﻿# Build outputs
+bin/
+obj/
+*.user
+*.suo
+
+# References (game + BepInEx DLLs)
+references/*.dll
+references/*.pdb
+
+# Build artifacts for plugins
+*.dll
+*.pdb
+*.xml
+
+# IDE
+.vs/
+.vscode/
+*.csproj.user
+
+# Temporary
+*.tmp
+*.log
