@@ -9,7 +9,7 @@ obj/
 # references/*.pdb
 
 # Build artifacts for plugins
-*.dll
+# *.dll
 *.pdb
 *.xml
 
