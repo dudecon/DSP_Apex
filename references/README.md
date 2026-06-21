@@ -20,4 +20,6 @@ This folder contains the game and BepInEx assemblies needed to build the mods.
 
 Alternatively, for convenience during active development you can run a script or set post-build events in the .csproj files to reference the full game path directly.
 
+**Machine-specific paths:** Copy `local.example.md` to `local.md` (gitignored) and record your DSP install folder there so tooling and new sessions can find it without guessing.
+
 Current contents (if any) were copied from the local DSP install.

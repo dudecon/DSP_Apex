@@ -22,3 +22,6 @@ obj/
 *.tmp
 *.log
 terminals/
+
+# Machine-specific local settings (see local.example.md)
+local.md
