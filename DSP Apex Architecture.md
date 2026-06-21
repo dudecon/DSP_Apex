@@ -23,8 +23,8 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 ### 0. Recipe Rebalance
 
 - The core recipe updates, shared by several of the other mods.
-- Ore crafting from stone (like Silicon ore) to allow hand-crafting and small volume production anywhere.
 - Miners not at ore spots produce stone (low rate).
+- Ore crafting from stone (like Silicon ore) to allow low-efficiency production anywhere.
 - Fusion product chains. Deut Fusion produces Helium. Triple-helium to produce Carbon. Carbon fusion to produce stone.
 - More recipes for a path to all the exotic materials using mod 4 & 6, but extensible with other non-pack mods if desired.
 
