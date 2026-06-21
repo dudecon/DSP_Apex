@@ -5,8 +5,8 @@ obj/
 *.suo
 
 # References (game + BepInEx DLLs)
-references/*.dll
-references/*.pdb
+# references/*.dll
+# references/*.pdb
 
 # Build artifacts for plugins
 *.dll
