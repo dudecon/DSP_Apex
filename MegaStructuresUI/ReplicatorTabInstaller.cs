@@ -132,7 +132,8 @@ namespace MegaStructuresUI
                     rect.localScale = templateRect.localScale * CompactScale;
                 }
 
-                SetTabLabel(clone, ReplicatorTabConfig.GetTabLabel(tab));
+                ReplicatorTabLabelUtil.ApplyLabel(clone, ReplicatorTabConfig.GetTabLabel(tab));
+                ReplicatorTabIconLoader.ApplyTabIcon(uiButton, tab);
                 state.TabButtons.Add(uiButton);
             }
         }
@@ -149,11 +150,16 @@ namespace MegaStructuresUI
             return templateRect.rect.width * CompactScale;
         }
 
-        private static void SetTabLabel(GameObject buttonObject, string label)
+        internal static void RefreshModTabLabels(UIReplicatorWindow window)
         {
-            var text = buttonObject.GetComponentInChildren<Text>(true);
-            if (text != null)
-                text.text = label;
+            if (window == null)
+                return;
+
+            var state = GetOrAddState(window);
+            if (!state.Installed)
+                return;
+
+            ReplicatorTabLabelUtil.RefreshModTabLabels(state);
         }
 
         private static ReplicatorTabState GetOrAddState(UIReplicatorWindow window)

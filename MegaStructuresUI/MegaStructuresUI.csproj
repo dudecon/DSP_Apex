@@ -49,6 +49,10 @@
       <HintPath>..\references\UnityEngine.InputLegacyModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\references\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
 
     <!-- BepInEx references (from the xiaoye97 BepInExPack) -->
     <Reference Include="BepInEx">
@@ -65,9 +69,14 @@
     <ProjectReference Include="..\RecipeRebalance\RecipeRebalance.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <TabIconFiles Include="Icons\ReplicatorTabs\**\*.*" />
+  </ItemGroup>
+
   <Target Name="CopyToPlugins" AfterTargets="Build">
     <MakeDir Directories="$(DSPPluginsPath)" />
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DSPPluginsPath)" />
+    <Copy SourceFiles="@(TabIconFiles)" DestinationFiles="@(TabIconFiles->'$(DSPPluginsPath)\Icons\ReplicatorTabs\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
     <Message Text="Copied $(TargetFileName) to $(DSPPluginsPath)" Importance="high" />
   </Target>
 

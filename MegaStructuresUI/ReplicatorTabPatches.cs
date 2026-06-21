@@ -39,6 +39,7 @@ namespace MegaStructuresUI
         internal static void Postfix(UIReplicatorWindow __instance)
         {
             ReplicatorTabInstaller.EnsureInstalled(__instance);
+            ReplicatorTabInstaller.RefreshModTabLabels(__instance);
             ReplicatorTabInstaller.SyncTabHighlights(__instance, UiReplicatorUtil.GetCurrentType(__instance));
         }
     }
