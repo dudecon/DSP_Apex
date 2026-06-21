@@ -18,7 +18,16 @@ The suite bridges the scale gap between terrestrial factories and full stellar D
 
 Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponization, and empire-scale manipulation. The Dyson Sphere evolves from a power source into a living command center and "Death Star" equivalent.
 
-## Core Mod Suite (1-9)
+## Core Mod Suite (0-9)
+
+### 0. Recipe Rebalance
+
+- The core recipe updates, shared by several of the other mods.
+- Ore crafting from stone (like Silicon ore) to allow hand-crafting and small volume production anywhere.
+- Miners not at ore spots produce stone (low rate).
+- Fusion product chains. Deut Fusion produces Helium. Triple-helium to produce Carbon. Carbon fusion to produce stone.
+- More recipes for a path to all the exotic materials using mod 4 & 6, but extensible with other non-pack mods if desired.
+
 
 ### 1. DysonHarvester
 
@@ -49,14 +58,14 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 ### 5. MegaStructuresUI
 
 - **Sphere Production Panel / Orbital Command Interface**: Dedicated UI (extending Dyson Sphere editor) for allocating space/modules across rings, stations, ships, and sphere sections. Real-time stats on output, power, transmutation, beams.
-- **Orbital Modules**: Replace blueprints at orbital scale. Players design/optimize enclosed production blocks that snap into structures.
+- **Orbital Modules**: Replace blueprints at orbital scale. Players design/optimize enclosed production blocks that snap into megastructures.
 - Procedural generation of external visuals (glowing panels, struts, lights, antennas) based on internal allocation. Fully enclosed modules for performance; optional zoom-in for factory detail.
 - Abstracted simulation at large scales while retaining factory optimization feel.
 
 ### 6. DysonWeapons
 
 - Outer sphere rings (completed frames in polar mode) convertible to **massive particle accelerators**.
-- Transmutation: Convert abundant H/D (plus power) into rarer resources; Stone/Soil into ores.
+- Transmutation: Convert abundant H/D (plus power) into rarer resources; Stone/Soil into ores at higher efficiency.
 - Orbital particle beams: Anti-Dark Fog defense, escalating to interstellar beams (Warper cost, Long Guns-inspired).
 - Planet harvesting/evaporation/destruction at high tier (high cost/risk/reward).
 - Exotic stars provide superior “Death Star cores” with enhanced power/special effects.
