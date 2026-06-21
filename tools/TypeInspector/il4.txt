@@ -1,0 +1,2197 @@
+﻿=== VFPreload (all methods) ===
+  Void InvokeOnLoad()
+  Void InvokeOnLoadHalf()
+  Void InvokeOnLoadWorkEnded()
+  Int32 get_objCnt()
+  Void SaveObject(UnityEngine.Object)
+  Void AddError(System.String)
+  Void SaveGameObjectResources(UnityEngine.GameObject)
+  Void SaveMaterial(UnityEngine.Material)
+  Void SaveMaterials(UnityEngine.Material[])
+  Void SaveMaterials(UnityEngine.Material[][])
+  Void SaveMeshes(UnityEngine.Mesh[])
+  Void Start()
+  Void OnDestroy()
+  Void OnEnable()
+  Void Restart()
+  System.Collections.IEnumerator PreloadThread()
+  System.Collections.IEnumerator RestartThread()
+  Boolean IsLogined()
+  Boolean IsSplashSolid()
+  Boolean IsSplashEnd()
+  Boolean IsMenuDemoLoaded()
+  Boolean IsMusicReached()
+  Void Update()
+  Void Free()
+  Void SelectLanguageZHCN()
+  Void SelectLanguageENUS()
+  Void SelectLanguageDEDE()
+  Void SelectLanguageFRFR()
+  Void SelectLanguageJAJA()
+  Void SelectLanguageKOKO()
+  Void SelectLanguageESES()
+  Void SelectLanguage(Int32)
+  Void ResizeRestoreSettingBtn()
+  Void OnLanguageChange()
+  Void OnRestoreSettingBtnClick(Int32)
+  Void OnLoadingBgBtnClicked(Int32)
+  Void OnFixSettingBtnClicked(Int32)
+
+=== ItemProto ===
+  True/False/True Void InitFuelNeeds()
+  True/False/True Void InitTurretNeeds()
+  True/False/True Void InitFluids()
+  True/False/True Void InitTurrets()
+  True/False/True Void InitEnemyDropTables()
+  True/False/True Void InitConstructableItems()
+  True/False/True Void InitItemIds()
+  True/False/True Void InitItemIndices()
+  True/False/True Void InitMechaMaterials()
+  True/False/True Void InitFighterIndices()
+  True/False/True Void InitPowerFacilityIndices()
+  True/False/True Void InitProductionMask()
+  FIELD Int32 kMaxProtoId
+  FIELD Int32 kMaxSubId
+  FIELD Int32 kMaxProtoIndex
+
+=== PackageStatistics ===
+  True/False/False Void Count(StorageComponent)
+  True/False/False Int32 GetItemCount(Int32)
+
+=== RecipeProto ===
+  True/False/True Void InitRecipeItems()
+  True/False/True Void InitFractionatorNeeds()
+  FIELD Int32 kMaxProtoId
+
+=== RecipeProto ===
+  True/False/False Void Preload(Int32)
+
+=== BuildTool/Miner types ===
+MinerComponent
+EMinerType
+MinerDesc
+BuildTool
+BuildTool_Addon
+BuildTool_BlueprintCopy
+BuildTool_BlueprintPaste
+BuildTool_Click
+BuildTool_Dismantle
+BuildTool_Inserter
+BuildTool_None
+BuildTool_Path
+BuildTool_Reform
+BuildTool_Upgrade
+ABN_Miner
+ACH_VeinCoveredByMiner
+GD_MinerPowerOn
+GD_VeinCoveredByMiner
+
+BuildModel.previewModels type: System.Collections.Generic.List`1[BuildPreviewModel]
+=== BuildTool_Click (all methods) ===
+  Void _OnInit()
+  Void _OnFree()
+  Void _OnOpen()
+  Void _OnClose()
+  Void _OnTick(Int64)
+  Boolean DetermineActive()
+  Boolean UpdateHandItem()
+  Void UpdateRaycast()
+  Void DeterminePreviews()
+  Void UpdateCollidersForGiantBp()
+  Void MatchInserter(BuildPreview)
+  Boolean CheckBuildConditions()
+  Boolean ConfirmOperation(Boolean)
+  Void CreatePrebuilds()
+  Void UpdatePreviewModels(BuildModel)
+  Void UpdatePreviewModelConditions(BuildModel)
+  Void UpdateGizmos(BuildModel)
+  Void NotifyBuilt(Int32, Int32)
+  Void NotifyDismantled(Int32)
+  Void NotifyKilled(Int32, Int32)
+  Void EscLogic()
+
+=== BuildModel fields ===
+  PlayerAction_Build actionBuild
+  GameObject buildPreviewGroup
+  List`1 previewTransforms
+  List`1 previewMeshFilters
+  List`1 previewModels
+  Int32 previewModelCursor
+  FactoryModel factoryModel
+  ConnGizmoGraph connGraph
+  ConnGizmoRenderer connRenderer
+  BuildGizmoDesc startGizmoDesc
+  BuildGizmoDesc endGizmoDesc
+  BuildGizmoDesc previewGizmoDesc
+  Int32 startGizmoObjId
+  Int32 endGizmoObjId
+  Boolean previewGizmoOn
+  Int32 cursorState
+  String cursorText
+  String promptText
+
+=== BuildPreviewModel fields ===
+  Int32 index
+  Transform trans
+  MeshRenderer mr
+  MeshFilter mf
+  BoxCollider[] cols
+  BuildPreview buildPreview
+
+=== BuildPreview fields ===
+  ItemProto item
+  PrefabDesc desc
+  Vector3 lpos
+  Quaternion lrot
+  Vector3 lpos2
+  Quaternion lrot2
+  Single tilt
+  Int32 objId
+  Int32[] nearestPowerObjId
+  Int32 coverObjId
+  Boolean willRemoveCover
+  Boolean willReconstructCover
+  Single genNearColliderArea2
+  BuildPreview output
+  BuildPreview input
+  BuildPreview coverbp
+  BuildPreview addonbp
+  Int32 addonObjId
+  Int32 addonAreaIdx
+  Int32 outputObjId
+  Int32 inputObjId
+  Int32 outputToSlot
+  Int32 inputFromSlot
+  Int32 outputFromSlot
+  Int32 inputToSlot
+  Int32 outputOffset
+  Int32 inputOffset
+  Boolean needModel
+  Int32 previewIndex
+  Int32 bpgpuiModelId
+  Int32 bpgpuiModelInstIndex
+  Int32 recipeId
+  Int32 filterId
+  Boolean isConnNode
+  Int32[] parameters
+  Int32 paramCount
+  EBuildCondition condition
+  String content
+
+=== PrefabDesc fields ===
+  Int32 modelIndex
+  Int32 subId
+  Boolean hasObject
+  GameObject prefab
+  GameObject colliderPrefab
+  Boolean independentCollider
+  Mesh mesh
+  Mesh[] meshes
+  Material[] materials
+  Int32 lodCount
+  Mesh[] lodMeshes
+  Single[] lodDistances
+  Material[][] lodMaterials
+  Material[][] lodBlueprintMaterials
+  Boolean[][] lodSubmeshIgnores
+  VertaBuffer[] lodVertas
+  Mesh starmapMesh
+  VertaBuffer starmapVerta
+  Material starmapMaterial
+  Boolean disableStarmapCulling
+  Mesh physCollider
+  Mesh meshCollider
+  Int32 startInstCapacity
+  Int32 batchCapacity
+  Single cullingHeight
+  Int32 castShadow
+  Int32 recvShadow
+  ColliderData[] colliders
+  Boolean hasBuildCollider
+  ColliderData buildCollider
+  ColliderData[] buildColliders
+  ColliderDataLF[] spacePhysicsColliders
+  ColliderDataLF[] spaceBuildColliders
+  Single roughRadius
+  Single roughHeight
+  Single roughWidth
+  Int32 colliderComplexity
+  Single barWidth
+  Single barHeight
+  Vector3[] landPoints
+  Single landOffset
+  Boolean allowBuildInWater
+  Boolean needBuildInWaterTech
+  Vector3[] waterPoints
+  Int32[] waterTypes
+  Boolean multiLevel
+  Vector3 lapJoint
+  Boolean multiLevelAllowPortsOrSlots
+  Boolean multiLevelAllowRotate
+  Int32[] multiLevelAlternativeIds
+  Boolean[] multiLevelAlternativeYawTransposes
+  EAddonType addonType
+  Boolean veinMiner
+  Boolean oilMiner
+  Boolean dragBuild
+  Boolean dragBuildByGrid
+  Boolean dragBuildByRect
+  Vector2 dragBuildDist
+  IntVector2 dragBuildGridDistOverride
+  Vector2 blueprintBoxSize
+  Int32 shiftSnapGridInterval
+  Boolean isBelt
+  Int32 beltSpeed
+  Int32 beltPrototype
+  Boolean isSplitter
+  Boolean isMonitor
+  Boolean isSpeaker
+  Boolean isSpraycoster
+  Boolean isPiler
+  Boolean isStorage
+  Int32 storageCol
+  Int32 storageRow
+  EMinerType minerType
+  Int32 minerPeriod
+  Boolean isInserter
+  Int32 inserterGrade
+  Int32 inserterSTT
+  Int32 inserterDelay
+  Boolean inserterCanStack
+  Int32 inserterStackSize
+  Boolean isAssembler
+  Int32 assemblerSpeed
+  ERecipeType assemblerRecipeType
+  Boolean isFractionator
+  Int32 fracFluidInputMax
+  Int32 fracProductOutputMax
+  Int32 fracFluidOutputMax
+  Boolean isLab
+  Int32 labAssembleSpeed
+  Single labResearchSpeed
+  Boolean isTank
+  Int32 fluidStorageCount
+  Single anim_prepare_length
+  Single anim_working_length
+  Boolean isPowerNode
+  Single powerConnectDistance
+  Single powerCoverRadius
+  Vector3 powerPoint
+  Boolean isPowerGen
+  Boolean photovoltaic
+  Boolean windForcedPower
+  Boolean gammaRayReceiver
+  Boolean geothermal
+  Int64 genEnergyPerTick
+  Int64 useFuelPerTick
+  Int32 fuelMask
+  Int32 powerCatalystId
+  Int32 powerProductId
+  Int64 powerProductHeat
+  Boolean isAccumulator
+  Int64 inputEnergyPerTick
+  Int64 outputEnergyPerTick
+  Int64 maxAcuEnergy
+  Boolean isPowerConsumer
+  Boolean isPowerCharger
+  Int64 workEnergyPerTick
+  Int64 idleEnergyPerTick
+  Boolean isPowerExchanger
+  Int64 exchangeEnergyPerTick
+  Int32 emptyId
+  Int32 fullId
+  Int64 maxExcEnergy
+  Boolean isStation
+  Boolean isStellarStation
+  Int32 stationMaxItemCount
+  Int32 stationMaxItemKinds
+  Int32 stationMaxDroneCount
+  Int32 stationMaxShipCount
+  Int64 stationMaxEnergyAcc
+  Vector3 stationDronePos
+  Vector3 stationShipPos
+  Boolean isCollectStation
+  Int32 stationCollectSpeed
+  Int32[] stationCollectIds
+  Boolean isVeinCollector
+  Boolean isDispenser
+  Int32 dispenserMaxCourierCount
+  Int64 dispenserMaxEnergyAcc
+  Boolean isEjector
+  Single ejectorPivotY
+  Single ejectorMuzzleY
+  Int32 ejectorChargeFrame
+  Int32 ejectorColdFrame
+  Int32 ejectorBulletId
+  Boolean isSilo
+  Int32 siloChargeFrame
+  Int32 siloColdFrame
+  Int32 siloBulletId
+  Int32 minimapType
+  Vector4 minimapScl
+  Pose[] portPoses
+  Pose[] slotPoses
+  Vector3 selectCenter
+  Vector3 selectSize
+  Single selectAlpha
+  Single selectDistance
+  Single signHeight
+  Single signSize
+  Pose[] addonAreaPoses
+  Pose[] addonAreaColPoses
+  Vector3[] addonAreaSize
+  Boolean hasAudio
+  Int32 audioProtoId0
+  Int32 audioProtoId1
+  Int32 audioProtoId2
+  Int32 audioLogic
+  Single audioRadius0
+  Single audioRadius1
+  Single audioFalloff
+  Single audioVolume
+  Single audioPitch
+  Single audioDoppler
+  Int32 monitorOffset
+  Int32 monitorTargetCargoBytes
+  Int32 monitorPeriodTickCount
+  Int32 monitorPassOperator
+  Int32 monitorPassColorId
+  Int32 monitorFailColorId
+  Int32 monitorSystemWarningMode
+  Int32 monitorMode
+  Int32 monitorCargoFilter
+  Int32 monitorSignalId
+  Int32 monitorSpawnOperator
+  Int32 speakerTone
+  Int32 speakerVolume
+  Int32 speakerPitch
+  Single speakerLength
+  Boolean speakerRepeat
+  Int32 incCapacity
+  Int32[] incItemId
+  Boolean isRuin
+  Int32 ruinOriginModelId
+  WreckageHandler wreckagePrefab
+  WreckageHandler[] wreckagePrefabs
+  WreckageFragment[][] wreckageFragments
+  Boolean isSpacecraft
+  Boolean isEnemy
+  Int32 enemyProtoId
+  Single enemySelectCircleRadius
+  Int32 enemySandCount
+  Boolean isEnemyBuilder
+  Int32 enemyMinMatter
+  Int32 enemyMinEnergy
+  Int32 enemyMaxMatter
+  Int32 enemyMaxEnergy
+  Int32 enemySpMatter
+  Int32 enemySpEnergy
+  Int32 enemySpMax
+  Int32 enemyIdleEnergy
+  Int32 enemyWorkEnergy
+  Int32 enemyGenMatter
+  Int32 enemyGenEnergy
+  Boolean isDFGroundBase
+  Boolean isDFGroundConnector
+  Boolean isDFGroundReplicator
+  Int32 dfReplicatorProductId
+  Int32 dfReplicatorProductSpMatter
+  Int32 dfReplicatorProductSpEnergy
+  Int32 dfReplicatorProductSpMax
+  Int32 dfReplicatorTurboSpeed
+  Int32 dfReplicatorUnitSupply
+  Vector3 dfReplicatorProductInitialPos
+  Quaternion dfReplicatorProductInitialRot
+  Vector3 dfReplicatorProductInitialVel
+  Int32 dfReplicatorProductInitialTick
+  Boolean isDFGroundTurret
+  EDFTurretType dfTurretType
+  Single dfTurretAttackRange
+  Single dfTurretSensorRange
+  Single dfTurretRangeInc
+  Int32 dfTurretAttackEnergy
+  Int32 dfTurretAttackInterval
+  Int32 dfTurretAttackHeat
+  Int32 dfTurretAttackDamage
+  Int32 dfTurretAttackDamageInc
+  Int32 dfTurretColdSpeed
+  Int32 dfTurretColdSpeedInc
+  Single dfTurretMuzzleY
+  Boolean isDFGroundShield
+  Boolean isDFSpaceCore
+  Int32 dfsCoreBuildRelaySpMatter
+  Int32 dfsCoreBuildRelaySpEnergy
+  Int32 dfsCoreBuildRelaySpMax
+  Int32 dfsCoreBuildTinderSpMatter
+  Int32 dfsCoreBuildTinderSpEnergy
+  Int32 dfsCoreBuildTinderSpMax
+  Int32 dfsCoreBuildTinderTriggerMinTick
+  Int32 dfsCoreBuildTinderTriggerKeyTick
+  Single dfsCoreBuildTinderTriggerProbability
+  Boolean isDFSpaceNode
+  Boolean isDFSpaceConnector
+  Boolean isDFSpaceConnectorVertical
+  Boolean isDFSpaceReplicator
+  Boolean isDFSpaceGammaReceiver
+  Boolean isDFSpaceTurret
+  Boolean isDFRelay
+  Boolean isDFTinder
+  Boolean isEnemyUnit
+  Single unitMaxMovementSpeed
+  Single unitMaxMovementAcceleration
+  Single unitMarchMovementSpeed
+  Single unitAssaultArriveRange
+  Single unitEngageArriveRange
+  Single unitSensorRange
+  Single unitAttackRange0
+  Int32 unitAttackInterval0
+  Int32 unitAttackHeat0
+  Int32 unitAttackDamage0
+  Int32 unitAttackDamageInc0
+  Single unitAttackRange1
+  Int32 unitAttackInterval1
+  Int32 unitAttackHeat1
+  Int32 unitAttackDamage1
+  Int32 unitAttackDamageInc1
+  Single unitAttackRange2
+  Int32 unitAttackInterval2
+  Int32 unitAttackHeat2
+  Int32 unitAttackDamage2
+  Int32 unitAttackDamageInc2
+  Int32 unitColdSpeed
+  Int32 unitColdSpeedInc
+  Boolean isFleet
+  Single fleetInitializeUnitSpeedScale
+  Single fleetSensorRange
+  Single fleetMaxActiveArea
+  Single fleetMaxMovementSpeed
+  Single fleetMaxMovementAcceleration
+  Single fleetMaxRotateAcceleration
+  Int32 fleetMaxAssembleCount
+  Int32 fleetMaxChargingCount
+  FleetPortDesc[] fleetPorts
+  Boolean isCraftUnit
+  ECraftSize craftUnitSize
+  Int32 craftUnitInitializeSpeed
+  Single craftUnitMaxMovementSpeed
+  Single craftUnitMaxMovementAcceleration
+  Single craftUnitMaxRotateAcceleration
+  Single craftUnitAttackRange0
+  Single craftUnitAttackRange1
+  Single craftUnitSensorRange
+  Int32 craftUnitROF0
+  Int32 craftUnitROF1
+  Int32 craftUnitRoundInterval0
+  Int32 craftUnitRoundInterval1
+  Int32 craftUnitMuzzleInterval0
+  Int32 craftUnitMuzzleInterval1
+  Int32 craftUnitMuzzleCount0
+  Int32 craftUnitMuzzleCount1
+  Int32 craftUnitAttackDamage0
+  Int32 craftUnitAttackDamage1
+  Int32 craftUnitEnergyPerTick
+  Int32 craftUnitFireEnergy0
+  Int32 craftUnitFireEnergy1
+  Int32 craftUnitRepairEnergyPerHP
+  Int32 craftUnitRepairHPPerTick
+  Int32 craftUnitAddEnemyExppBase
+  Int32 craftUnitAddEnemyThreatBase
+  Int32 craftUnitAddEnemyHatredBase
+  Single craftUnitAddEnemyExppCoef
+  Single craftUnitAddEnemyThreatCoef
+  Single craftUnitAddEnemyHatredCoef
+  Boolean isTurret
+  ETurretType turretType
+  EAmmoType turretAmmoType
+  VSLayerMask turretVSCaps
+  Vector3 turretDefaultDir
+  Int32 turretROF
+  Int32 turretRoundInterval
+  Int32 turretMuzzleInterval
+  Byte turretMuzzleCount
+  Single turretMinAttackRange
+  Single turretMaxAttackRange
+  Single turretSpaceAttackRange
+  Single turretPitchUpMax
+  Single turretPitchDownMax
+  Single turretDamageScale
+  Single turretMuzzleY
+  Single turretAimSpeed
+  Single turretUniformAngleSpeed
+  Single turretAngleAcc
+  Int32 turretAddEnemyExppBase
+  Int32 turretAddEnemyThreatBase
+  Int32 turretAddEnemyHatredBase
+  Single turretAddEnemyExppCoef
+  Single turretAddEnemyThreatCoef
+  Single turretAddEnemyHatredCoef
+  Boolean isBeacon
+  Single beaconSignalRadius
+  Int32 beaconROF
+  Single beaconSpaceSignalRange
+  Single beaconPitchUpMax
+  Single beaconPitchDownMax
+  Boolean isFieldGenerator
+  Int64 fieldGenEnergyCapacity
+  Int64 fieldGenEnergyRequire0
+  Int64 fieldGenEnergyRequire1
+  Boolean isBattleBase
+  Int64 battleBaseMaxEnergyAcc
+  Single battleBasePickRange
+  Boolean isAmmo
+  Single AmmoBlastRadius0
+  Single AmmoBlastRadius1
+  Single AmmoBlastFalloff
+  Single AmmoMoveAcc
+  Single AmmoTurnAcc
+  Int32 AmmoHitIndex
+  Int32 AmmoParameter0
+  Boolean isConstructionModule
+  Int32 constructionDroneCount
+  Single constructionRange
+  Vector3 constructionDroneEjectPos
+  Boolean isConstructionDrone
+  Boolean isCombatModule
+  Int32 combatModuleFleetProtoId
+  Transform[] combatModuleFleetTrans
+  CreationPartPropertyBlock creationBlock
+  Boolean isMarker
+  Single markerPointDefaultHeight
+  Single markerPointDefaultRadius
+  PrefabDesc none
+
+=== ABN_Miner ===
+  False/False/False Void OnGameTick(Int64)
+  False/False/False Void CheckMiner()
+  FIELD Int32 checkMinerId
+
+=== GD_VeinCoveredByMiner ===
+  False/False/False Boolean OnInit()
+  False/False/False Void OnFree()
+  False/False/False Void OnGameTick(Int64)
+  True/False/False Void Determine()
+  False/False/False Boolean IsContentVein(Int32)
+  FIELD Int64[] veinProductIds
+  FIELD Boolean needWorking
+
+=== TechProtoSet (all methods) ===
+
+=== TechProto ===
+  True/False/False System.String UnlockFunctionText(System.Text.StringBuilder)
+  True/False/False Void Preload()
+  True/False/False Void Preload2()
+  False/False/False Void RescurCalcUnlockNeedItems(TechProto, Int32[], Int32[])
+  FIELD Int32[] UnlockRecipes
+  FIELD Int32[] UnlockFunctions
+  FIELD Double[] UnlockValues
+  FIELD RecipeProto[] unlockRecipeArray
+  FIELD IDCNT[] unlockNeedItemArray
+  FIELD Int32 INFINITE_MINE_TECH_ID
+
+=== RecipeProto ===
+  True/False/False Void FindPreTech()
+  FIELD Boolean Explicit
+  FIELD Int32 GridIndex
+  FIELD TechProto preTech
+
+=== AssemblerComponent ===
+  True/False/False Void SetRecipe(Int32, SignData[])
+  FIELD ERecipeType recipeType
+  FIELD Int32 recipeId
+  FIELD RecipeExecuteData recipeExecuteData
+
+=== UIAssemblerWindow (all methods) ===
+  Int32 get_assemblerId()
+  Void set_assemblerId(Int32)
+  Void _OnCreate()
+  Void _OnDestroy()
+  Boolean _OnInit()
+  Void _OnFree()
+  Void _OnRegEvent()
+  Void _OnUnregEvent()
+  Void _OnOpen()
+  Void _OnClose()
+  Void DeterminePlayerPackageVisible(Int32)
+  Void OpenPlayerPackage()
+  Void ClosePlayerPackage()
+  Void OnPlayerPackageSizeChange()
+  Void OnAssemblerIdChange()
+  Void FreeServingBox()
+  Void SyncServingStorage()
+  Void SyncServingStorage(AssemblerComponent ByRef)
+  Void OnManualServingContentChange()
+  Void OnServingBoxChange()
+  Void _OnUpdate()
+  Void RefreshIncUIs(AssemblerComponent ByRef, Boolean)
+  Void OnPlayerInspectFastFillIn()
+  Void BeforeServingBoxManualChange()
+  Void OnProductIcon0Click()
+  Void OnProductIcon1Click()
+  Void OnRecipeResetClick()
+  Void OnSelectRecipeClick()
+  Void OnRecipePickerReturn(RecipeProto)
+  Void OnCopyClick()
+  Void OnPasteClick()
+  Void RefreshAlarmSwitchRect()
+  Void OnAlarmSwitchButtonClick(Int32)
+  Void OnIncSwitchClick()
+
+=== UIReplicatorWindow fields ===
+  RectTransform windowRect
+  RectTransform queueGroup
+  RectTransform recipeGroup
+  Image queueBg
+  RawImage queueIcons
+  Text queueTotalTimeText
+  Text queueCountText
+  Image currProgressImage
+  Image recipeBg
+  RawImage recipeIcons
+  Image recipeSelImage
+  Text prefabNumText
+  UIButton typeButton1
+  UIButton typeButton2
+  GameObject currPredictGroup
+  Text currPredictCountText
+  UIButton okButton
+  UIButton plusButton
+  UIButton minusButton
+  Text multiValueText
+  CanvasGroup treeGroup
+  RectTransform treeMainBox
+  UIButton treeMainButton0
+  Image treeMainIcon0
+  Text treeMainCountText0
+  UIButton treeMainButton1
+  Image treeMainIcon1
+  Text treeMainCountText1
+  Text treeMainTimeText
+  Text treeMainPlaceText
+  Image treeMainLineL
+  Image treeMainLineR
+  RectTransform treeMainHLine
+  UIButton treeDownPrefab
+  UIButton treeUpPrefab
+  Tweener treeTweener1
+  Tweener treeTweener2
+  UISwitch instantItemSwitch
+  UISwitch batchSwitch
+  UIButton sandboxAddUsefulItemButton
+  UIButton sandboxClearPackageButton
+  Color mainTaskTextColor
+  Color childTaskTextColor
+  Color warningTextColor
+  Color errorTextColor
+  Boolean isInstantItem
+  Boolean isBatch
+  Boolean showTips
+  Single showTipsDelay
+  Int32 tipAnchor
+  UIItemTip screenTip
+  Single mouseInTime
+  EventTrigger evtQueue
+  EventTrigger evtRecipe
+  Material queueIconMat
+  Material queueBgMat
+  UInt32[] queueIndexArray
+  UInt32[] queueStateArray
+  ComputeBuffer queueIndexBuffer
+  ComputeBuffer queueStateBuffer
+  Int32 currentType
+  Material recipeIconMat
+  Material recipeBgMat
+  UInt32[] recipeIndexArray
+  UInt32[] recipeStateArray
+  RecipeProto[] recipeProtoArray
+  ComputeBuffer recipeIndexBuffer
+  ComputeBuffer recipeStateBuffer
+  RecipeProto selectedRecipe
+  Int32 selectedRecipeIndex
+  List`1 treeDownList
+  List`1 treeUpList
+  Dictionary`2 multipliers
+  Text[] queueNumTexts
+  MechaForge mechaForge
+  List`1 taskQueue
+  Boolean mouseInQueue
+  Int32 mouseQueueIndex
+  Boolean mouseInRecipe
+  Int32 mouseRecipeIndex
+  Int32 colCount
+  Int32 queueRowCount
+  Int32 recipeRowCount
+  Int32 kGridSize
+  Int32 kPadding
+  String updateProfiler
+  String lateUpdateProfiler
+  Boolean unsafeGameObjectState
+
+=== UIRecipePicker fields ===
+  RectTransform pickerTrans
+  UIButton typeButton1
+  UIButton typeButton2
+  Image selImage
+  RawImage iconImage
+  EventTrigger eventTrigger
+  ERecipeType filter
+  Int32 currentType
+  Material iconMat
+  UInt32[] indexArray
+  RecipeProto[] protoArray
+  ComputeBuffer indexBuffer
+  RecipeProto selectedProto
+  Int32 hoveredIndex
+  Action`1 onReturn
+  Boolean showTips
+  Single showTipsDelay
+  Int32 tipAnchor
+  UIItemTip screenTip
+  Single mouseInTime
+  Boolean mouseInBox
+  Int32 colCount
+  Int32 rowCount
+  Int32 kGridSize
+  Int32 kPadding
+  String updateProfiler
+  String lateUpdateProfiler
+  Boolean unsafeGameObjectState
+
+=== UIRecipeGrid fields ===
+NOT FOUND
+
+=== UIRecipeSlot fields ===
+NOT FOUND
+
+=== UIHandcraft fields ===
+NOT FOUND
+
+=== UIPackageGrid fields ===
+NOT FOUND
+
+=== UIPlayerPackage fields ===
+NOT FOUND
+
+=== UIStorageGrid fields ===
+  Boolean primary
+  Int32 colCount
+  Int32 rowCount
+  Int32 textYOffset
+  Int32 gridHoverPadding
+  RectTransform rectTrans
+  RectTransform contentRect
+  Image bgImage
+  RawImage iconImage
+  Text prefabNumText
+  Boolean editableFilter
+  Boolean sortableFilter
+  Color numNormalColor
+  Color numLackColor
+  Int32 lackParam
+  Vector2 filterPickerWindowOffset
+  Boolean showTips
+  Single showTipsDelay
+  Int32 tipAnchor
+  Vector2 tipOffset
+  RectTransform midClickTipRt
+  Material iconImageMat
+  Material bgImageMat
+  UInt32[] iconIndexArray
+  UInt32[] stateArray
+  ComputeBuffer iconIndexBuffer
+  ComputeBuffer stateBuffer
+  Text[] numTexts
+  Int32[] numbers
+  StorageComponent storage
+  StringBuilder strb
+  Single mouseInTime
+  Int32 mouseOnX
+  Int32 mouseOnY
+  Int32 mouseOnGridIndex
+  Int32 mouseOnGridIndexGeometry
+  Boolean allowFilterIcon
+  UIItemTip tip
+  Int32 splitGrid
+  Boolean multiSplit
+  Int32 _filter_picking_grid
+  Action beforeManualChange
+  List`1 openedStorages
+  Int32 kGridSize
+  Int32 kPadding
+  Int32 kMaxGrid
+  String updateProfiler
+  String lateUpdateProfiler
+  Boolean unsafeGameObjectState
+
+=== StorageComponent fields ===
+  Int32 id
+  Int32 entityId
+  Int32 previous
+  Int32 next
+  Int32 bottom
+  Int32 top
+  StorageComponent previousStorage
+  StorageComponent nextStorage
+  StorageComponent bottomStorage
+  StorageComponent topStorage
+  EStorageType type
+  Boolean isPlayerInventory
+  Int32 size
+  Int32 bans
+  GRID[] grids
+  Int32 searchStart
+  Int32 lastFullItem
+  Int32 lastEmptyItem
+  Boolean changed
+  Mutex stg_mx
+  Action onStorageChange
+  Action onStorageSizeChange
+  Boolean staticLoaded
+  Boolean[] itemIsFuel
+  Boolean[] itemIsAmmo
+  Boolean[] itemIsBomb
+  Boolean[] itemIsFighter
+  Int32[] itemStackCount
+  SortedDictionary`2 s_dict4sort
+  Int32 kMaxItemId
+
+=== PlayerPackage fields ===
+NOT FOUND
+
+=== UIBeltWindow fields ===
+  RectTransform windowTrans
+  UIGenericMenuButton menuButton
+  Text titleText
+  Text idText
+  Text lengthText
+  Text speedText
+  Text pathIdText
+  Text pathBufferCntText
+  Text pathNodeCntText
+  Text pathCargoCntText
+  Text runtimeSpeedText
+  Image itemIcon
+  Image inc1Image
+  Image inc2Image
+  Image inc3Image
+  UIButton itemUIButton
+  UIButton iconTagButton
+  Image iconTagImage
+  InputField iconTagCountInput
+  UIButton reverseButton
+  Sprite tagNotSelectedSprite
+  PlanetFactory factory
+  CargoTraffic traffic
+  Player player
+  Int64 cargoBytesPast
+  Int64 tickCount
+  Int32 lastCargoId
+  Int32 lastCargoOffset
+  Int32 _beltId
+  Single emptyTime
+  Boolean event_lock
+  Boolean pointerPress
+  Boolean pointerPut
+  List`1 _tmp_ids
+  List`1 _tmp_cargos
+  String updateProfiler
+  String lateUpdateProfiler
+  Boolean unsafeGameObjectState
+
+=== UIRecipePicker (all methods) ===
+  Void Popup(UnityEngine.Vector2, System.Action`1[RecipeProto])
+  Void Popup(UnityEngine.Vector2, System.Action`1[RecipeProto], ERecipeType)
+  Void Close()
+  Boolean get_isOpened()
+  Void _OnCreate()
+  Void _OnDestroy()
+  Boolean _OnInit()
+  Void _OnFree()
+  Void _OnRegEvent()
+  Void _OnUnregEvent()
+  Void _OnOpen()
+  Void _OnClose()
+  Void _OnUpdate()
+  Void SetMaterialProps()
+  Void SetBufferData()
+  Void RefreshIcons()
+  Void OnTypeButtonClick(Int32)
+  Void TestMouseIndex()
+  Void OnBoxMouseDown(UnityEngine.EventSystems.BaseEventData)
+  Void OnBoxMouseEnter(UnityEngine.EventSystems.BaseEventData)
+  Void OnBoxMouseExit(UnityEngine.EventSystems.BaseEventData)
+
+=== UIReplicatorWindow (all methods) ===
+  Void _OnCreate()
+  Void _OnDestroy()
+  Boolean _OnInit()
+  Void _OnFree()
+  Void _OnRegEvent()
+  Void _OnUnregEvent()
+  Void _OnOpen()
+  Void _OnClose()
+  Void _OnUpdate()
+  Void SetMaterialProps()
+  Void SetBufferData()
+  Void CreateQueueText(Int32)
+  Void ActiveQueueText(Int32)
+  Void DeactiveQueueText(Int32)
+  Void DeactiveAllQueueTexts()
+  Void RepositionQueueText(Int32)
+  Void RefreshQueueIcons()
+  Void RefreshRecipeIcons()
+  Void OnTypeButtonClick(Int32)
+  Void OnTreeButtonClick(Int32)
+  Void OnPlusButtonClick(Int32)
+  Void OnMinusButtonClick(Int32)
+  Void OnOkButtonClick(Int32, Boolean)
+  Void TestMouseQueueIndex()
+  Void TestMouseRecipeIndex()
+  Void SetSelectedRecipeIndex(Int32, Boolean)
+  Void SetSelectedRecipe(RecipeProto, Boolean)
+  Void OnSelectedRecipeChange(Boolean)
+  Void OnQueueMouseDown(UnityEngine.EventSystems.BaseEventData)
+  Void OnRecipeMouseDown(UnityEngine.EventSystems.BaseEventData)
+  Void OnQueueMouseEnter(UnityEngine.EventSystems.BaseEventData)
+  Void OnQueueMouseExit(UnityEngine.EventSystems.BaseEventData)
+  Void OnRecipeMouseEnter(UnityEngine.EventSystems.BaseEventData)
+  Void OnRecipeMouseExit(UnityEngine.EventSystems.BaseEventData)
+  Void OnTechUnlocked(Int32, Int32, Boolean)
+  Void OnInstantSwitchClick()
+  Void OnSandboxGetUsefulItems(Int32)
+  Void OnSandboxClearPlayerPackage(Int32)
+
+=== UIStorageGrid (all methods) ===
+  Void _OnCreate()
+  Void _OnDestroy()
+  Boolean _OnInit()
+  Void _OnFree()
+  Void _OnOpen()
+  Void _OnClose()
+  Void _OnUpdate()
+  Void OnApplicationFocus(Boolean)
+  Void SetStorageBansDisplay()
+  Void SetStorageData(StorageComponent)
+  Void SetRectSize()
+  Void CreateGridGraphic(Int32)
+  Void ActiveGridGraphic(Int32)
+  Void DeactiveGridGraphic(Int32)
+  Void DeactiveAllGridGraphics()
+  Void RepositionGridGraphic(Int32)
+  Void OnStorageDataChanged()
+  Void OnStorageSizeChanged()
+  Void OnStorageContentChanged()
+  UnityEngine.RectTransform get_tipRectTrans()
+  Void OnSort()
+  Void OnContentMouseEnter(UnityEngine.EventSystems.BaseEventData)
+  Void OnContentMouseExit(UnityEngine.EventSystems.BaseEventData)
+  Void OnContentMouseDown(UnityEngine.EventSystems.BaseEventData)
+  Void OnContentMouseUp(UnityEngine.EventSystems.BaseEventData)
+  UIStorageGrid GetOtherStorageGrid()
+  UIStorageGrid GetOtherStorageGrid(Int32)
+  Void OnGridMouseDown(Int32, Int32, Boolean, Boolean, Player)
+  Void OnFilterItemPickerReturn(ItemProto)
+  Void TransferToOther(UIStorageGrid, Player)
+  Void OnGridMouseUp(Int32, Int32, Boolean, Boolean, Player)
+  Void OnGridSplitMouseUp(Player)
+  Int32 HandTake(Player, Int32, Int32)
+  Void HandPut(Player, Int32, Int32)
+  Int32 split_inc(Int32 ByRef, Int32 ByRef, Int32)
+  Void add_beforeManualChange(System.Action)
+  Void remove_beforeManualChange(System.Action)
+  Void NotifyBeforeManualChange()
+
+=== UIStorageGrid ===
+  False/False/False Void _OnCreate()
+  False/False/False Void _OnOpen()
+  False/False/False Void _OnUpdate()
+  False/False/False Void SetStorageBansDisplay()
+  False/False/False Void SetStorageData(StorageComponent)
+  False/False/False Void SetRectSize()
+  False/False/False Void CreateGridGraphic(Int32)
+  False/False/False Void ActiveGridGraphic(Int32)
+  False/False/False Void DeactiveGridGraphic(Int32)
+  False/False/False Void DeactiveAllGridGraphics()
+  False/False/False Void RepositionGridGraphic(Int32)
+  True/False/False Void OnStorageSizeChanged()
+  False/False/False UIStorageGrid GetOtherStorageGrid()
+  False/False/False UIStorageGrid GetOtherStorageGrid(Int32)
+  False/False/False Void OnGridMouseDown(Int32, Int32, Boolean, Boolean, Player)
+  False/False/False Void OnGridMouseUp(Int32, Int32, Boolean, Boolean, Player)
+  False/False/False Void OnGridSplitMouseUp(Player)
+  FIELD Int32 rowCount
+  FIELD Int32 textYOffset
+  FIELD Int32 gridHoverPadding
+  FIELD Vector2 filterPickerWindowOffset
+  FIELD Vector2 tipOffset
+  FIELD Int32 mouseOnGridIndex
+  FIELD Int32 mouseOnGridIndexGeometry
+  FIELD Int32 splitGrid
+  FIELD Int32 _filter_picking_grid
+  FIELD List`1 openedStorages
+  FIELD Int32 kGridSize
+  FIELD Int32 kMaxGrid
+
+=== UIRecipePicker ===
+  True/False/True Boolean get_isOpened()
+  False/False/False Void _OnCreate()
+  False/False/False Boolean _OnInit()
+  False/False/False Void _OnOpen()
+  False/False/False Void _OnUpdate()
+  False/False/False Void SetMaterialProps()
+  False/False/False Void SetBufferData()
+  False/False/False Void RefreshIcons()
+  FIELD Int32 rowCount
+  FIELD Int32 kGridSize
+
+=== UIReplicatorWindow ===
+  False/False/False Void _OnCreate()
+  False/False/False Boolean _OnInit()
+  False/False/False Void _OnOpen()
+  False/False/False Void _OnUpdate()
+  False/False/False Void SetMaterialProps()
+  False/False/False Void SetBufferData()
+  False/False/False Void CreateQueueText(Int32)
+  False/False/False Void RefreshQueueIcons()
+  False/False/False Void RefreshRecipeIcons()
+  False/False/False Void SetSelectedRecipeIndex(Int32, Boolean)
+  True/False/False Void SetSelectedRecipe(RecipeProto, Boolean)
+  FIELD Int32 queueRowCount
+  FIELD Int32 recipeRowCount
+  FIELD Int32 kGridSize
+
+=== Types matching Recipe/Picker ===
+  UIRecipePicker
+
+=== Recipe grid samples ===
+  ERecipeType.Smelt
+  ERecipeType.Chemical
+  ERecipeType.Particle
+  ERecipeType.Refine
+
+=== ProtoSet<RecipeProto> Select/Exist ===
+  Void Init(Int32)
+  RecipeProto Select(Int32)
+  Boolean Exist(Int32)
+  FIELD RecipeProto[] dataArray
+  FIELD Dictionary`2 dataIndices
+  FIELD String TableName
+  FIELD String Signature
+
+=== Exist body ===
+  param Int32 id
+=== Select body ===
+  local RecipeProto
+  param Int32 id
+
+=== IL UIRecipePicker ===
+  -- SetMaterialProps --
+    ldarg.0
+    ldfld iconMat
+    ldstr "_IndexBuffer"
+    ldarg.0
+    ldfld indexBuffer
+    callvirt SetBuffer
+    ldc.r4 0.06521739
+    stloc.0
+    ldc.r4 1.15
+    stloc.1
+    ldloca.s
+    ldc.r4 14
+    ldc.r4 8
+    ldc.r4 0.04
+    ldc.r4 0.04
+    call .ctor
+    ldloca.s
+    ldloc.0
+    ldloc.0
+    ldloc.1
+    ldloc.1
+    call .ctor
+    ldarg.0
+    ldfld iconMat
+    ldstr "_Grid"
+    ldloc.2
+    callvirt SetVector
+    ldarg.0
+    ldfld iconMat
+    ldstr "_Rect"
+    ldloc.3
+    callvirt SetVector
+    ret
+  -- OnTypeButtonClick --
+    ldarg.0
+    ldarg.1
+    stfld currentType
+    ldarg.0
+    call RefreshIcons
+    ldarg.0
+    ldfld typeButton1
+    ldarg.1
+    ldc.i4.1
+    ceq
+    stfld highlighted
+    ldarg.0
+    ldfld typeButton2
+    ldarg.1
+    ldc.i4.2
+    ceq
+    stfld highlighted
+    ldarg.0
+    ldfld typeButton1
+    ldfld button
+    ldarg.1
+    ldc.i4.1
+    ceq
+    ldc.i4.0
+    ceq
+    callvirt set_interactable
+    ldarg.0
+    ldfld typeButton2
+    ldfld button
+    ldarg.1
+    ldc.i4.2
+    ceq
+    ldc.i4.0
+    ceq
+    callvirt set_interactable
+    ret
+  -- _OnCreate --
+    ldarg.0
+    ldarg.0
+    ldfld iconImage
+    callvirt get_material
+    call Instantiate
+    stfld iconMat
+    ldarg.0
+    ldfld iconImage
+    ldarg.0
+    ldfld iconMat
+    callvirt set_material
+    ldarg.0
+    ldc.i4 160
+    newarr
+    stfld indexArray
+    ldarg.0
+    ldarg.0
+    ldfld indexArray
+    ldlen
+    conv.i4
+    ldc.i4.4
+    newobj .ctor
+    stfld indexBuffer
+    ldarg.0
+    ldc.i4 160
+    newarr
+    stfld protoArray
+    ldarg.0
+    ldfld typeButton1
+    ldc.i4.1
+    stfld data
+    ldarg.0
+    ldfld typeButton2
+    ldc.i4.2
+    stfld data
+    ldarg.0
+    ldarg.0
+    ldfld iconImage
+    callvirt get_gameObject
+    callvirt AddComponent
+    stfld eventTrigger
+    ldnull
+    stloc.0
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.2
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnBoxMouseDown
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld eventTrigger
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.0
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnBoxMouseEnter
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld eventTrigger
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.1
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnBoxMouseExit
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld eventTrigger
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    ldarg.0
+    call SetMaterialProps
+    ret
+
+=== IL UIReplicatorWindow ===
+  -- SetMaterialProps --
+    ldarg.0
+    ldfld queueBgMat
+    ldstr "_StateBuffer"
+    ldarg.0
+    ldfld queueStateBuffer
+    callvirt SetBuffer
+    ldarg.0
+    ldfld queueIconMat
+    ldstr "_IndexBuffer"
+    ldarg.0
+    ldfld queueIndexBuffer
+    callvirt SetBuffer
+    ldarg.0
+    ldfld recipeBgMat
+    ldstr "_StateBuffer"
+    ldarg.0
+    ldfld recipeStateBuffer
+    callvirt SetBuffer
+    ldarg.0
+    ldfld recipeIconMat
+    ldstr "_IndexBuffer"
+    ldarg.0
+    ldfld recipeIndexBuffer
+    callvirt SetBuffer
+    ldc.r4 0.06521739
+    stloc.0
+    ldc.r4 1.15
+    stloc.1
+    ldloca.s
+    ldc.r4 14
+    ldc.r4 0
+    ldc.r4 0.04
+    ldc.r4 0.04
+    call .ctor
+    ldloca.s
+    ldloc.0
+    ldloc.0
+    ldloc.1
+    ldloc.1
+    call .ctor
+    ldloca.s
+    ldc.r4 1
+    stfld y
+    ldarg.0
+    ldfld queueBgMat
+    ldstr "_Grid"
+    ldloc.2
+    callvirt SetVector
+    ldarg.0
+    ldfld queueIconMat
+    ldstr "_Grid"
+    ldloc.2
+    callvirt SetVector
+    ldarg.0
+    ldfld queueIconMat
+    ldstr "_Rect"
+    ldloc.3
+    callvirt SetVector
+    ldloca.s
+    ldc.r4 8
+    stfld y
+    ldarg.0
+    ldfld recipeBgMat
+    ldstr "_Grid"
+    ldloc.2
+    callvirt SetVector
+    ldarg.0
+    ldfld recipeIconMat
+    ldstr "_Grid"
+    ldloc.2
+    callvirt SetVector
+    ldarg.0
+    ldfld recipeIconMat
+    ldstr "_Rect"
+    ldloc.3
+    callvirt SetVector
+    ret
+  -- OnTypeButtonClick --
+    ldarg.0
+    ldc.i4.m1
+    ldc.i4.1
+    call SetSelectedRecipeIndex
+    ldarg.0
+    ldarg.1
+    stfld currentType
+    ldarg.0
+    call RefreshRecipeIcons
+    ldarg.0
+    ldfld typeButton1
+    ldarg.1
+    ldc.i4.1
+    ceq
+    stfld highlighted
+    ldarg.0
+    ldfld typeButton2
+    ldarg.1
+    ldc.i4.2
+    ceq
+    stfld highlighted
+    ldarg.0
+    ldfld typeButton1
+    ldfld button
+    ldarg.1
+    ldc.i4.1
+    ceq
+    ldc.i4.0
+    ceq
+    callvirt set_interactable
+    ldarg.0
+    ldfld typeButton2
+    ldfld button
+    ldarg.1
+    ldc.i4.2
+    ceq
+    ldc.i4.0
+    ceq
+    callvirt set_interactable
+    ret
+  -- RefreshRecipeIcons --
+    ldarg.0
+    ldfld recipeIndexArray
+    ldc.i4.0
+    ldarg.0
+    ldfld recipeIndexArray
+    ldlen
+    conv.i4
+    call Clear
+    ldarg.0
+    ldfld recipeStateArray
+    ldc.i4.0
+    ldarg.0
+    ldfld recipeStateArray
+    ldlen
+    conv.i4
+    call Clear
+    ldarg.0
+    ldfld recipeProtoArray
+    ldc.i4.0
+    ldarg.0
+    ldfld recipeProtoArray
+    ldlen
+    conv.i4
+    call Clear
+    call get_history
+    stloc.0
+    call get_recipes
+    ldfld dataArray
+    stloc.1
+    call get_iconSet
+    stloc.2
+    ldc.i4.0
+    stloc.3
+    br
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    ldfld GridIndex
+    ldc.i4 1101
+    blt
+    ldloc.0
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    ldfld ID
+    callvirt RecipeUnlocked
+    brtrue.s
+    ldarg.0
+    ldfld isInstantItem
+    brfalse
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    ldfld GridIndex
+    ldc.i4 1000
+    div
+    stloc.s
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    ldfld GridIndex
+    ldloc.s
+    ldc.i4 1000
+    mul
+    sub
+    ldc.i4.s 100
+    div
+    ldc.i4.1
+    sub
+    stloc.s
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    ldfld GridIndex
+    ldc.i4.s 100
+    rem
+    ldc.i4.1
+    sub
+    stloc.s
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    ldfld Handcraft
+    stloc.s
+    ldloc.s
+    ldc.i4.0
+    blt.s
+    ldloc.s
+    ldc.i4.0
+    blt.s
+    ldloc.s
+    ldc.i4.8
+    bge.s
+    ldloc.s
+    ldc.i4.s 14
+    bge.s
+    ldloc.s
+    ldc.i4.s 14
+    mul
+    ldloc.s
+    add
+    stloc.s
+    ldloc.s
+    ldc.i4.0
+    blt.s
+    ldloc.s
+    ldarg.0
+    ldfld recipeIndexArray
+    ldlen
+    conv.i4
+    bge.s
+    ldloc.s
+    ldarg.0
+    ldfld currentType
+    bne.un.s
+    ldarg.0
+    ldfld recipeIndexArray
+    ldloc.s
+    ldloc.2
+    ldfld recipeIconIndex
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    ldfld ID
+    ldelem.u4
+    stelem.i4
+    ldarg.0
+    ldfld recipeStateArray
+    ldloc.s
+    ldloc.s
+    brtrue.s
+    ldarg.0
+    ldfld isInstantItem
+    brtrue.s
+    ldc.i4.8
+    br.s
+    ldc.i4.0
+    stelem.i4
+    ldarg.0
+    ldfld recipeProtoArray
+    ldloc.s
+    ldloc.1
+    ldloc.3
+    ldelem.ref
+    stelem.ref
+    ldloc.3
+    ldc.i4.1
+    add
+    stloc.3
+    ldloc.3
+    ldloc.1
+    ldlen
+    conv.i4
+    blt
+    ret
+  -- TestMouseRecipeIndex --
+    ldc.i4.0
+    stloc.0
+    br.s
+    ldarg.0
+    ldfld recipeStateArray
+    ldloc.0
+    ldelema
+    dup
+    ldind.u4
+    ldc.i4 254
+    and
+    stind.i4
+    ldloc.0
+    ldc.i4.1
+    add
+    stloc.0
+    ldloc.0
+    ldarg.0
+    ldfld recipeStateArray
+    ldlen
+    conv.i4
+    blt.s
+    ldarg.0
+    ldc.i4.m1
+    stfld mouseRecipeIndex
+    ldarg.0
+    ldfld mouseInRecipe
+    brfalse
+    call get_mousePosition
+    ldarg.0
+    ldfld recipeBg
+    callvirt get_rectTransform
+    ldloca.s
+    call ScreenPointIntoRect
+    brfalse.s
+    ldloc.1
+    ldfld x
+    ldc.r4 46
+    div
+    call FloorToInt
+    stloc.2
+    ldloc.1
+    ldfld y
+    neg
+    ldc.r4 46
+    div
+    call FloorToInt
+    stloc.3
+    ldloc.2
+    ldc.i4.0
+    blt.s
+    ldloc.3
+    ldc.i4.0
+    blt.s
+    ldloc.2
+    ldc.i4.s 14
+    bge.s
+    ldloc.3
+    ldc.i4.8
+    bge.s
+    ldarg.0
+    ldloc.2
+    ldloc.3
+    ldc.i4.s 14
+    mul
+    add
+    stfld mouseRecipeIndex
+    ldarg.0
+    ldfld recipeProtoArray
+    ldarg.0
+    ldfld mouseRecipeIndex
+    ldelem.ref
+    brfalse.s
+    ldarg.0
+    ldfld recipeStateArray
+    ldarg.0
+    ldfld mouseRecipeIndex
+    ldelema
+    dup
+    ldind.u4
+    ldc.i4.1
+    or
+    stind.i4
+    ret
+  -- _OnCreate --
+    ldarg.0
+    ldc.i4.s 120
+    newarr
+    stfld queueIndexArray
+    ldarg.0
+    ldarg.0
+    ldfld queueIndexArray
+    ldlen
+    conv.i4
+    ldc.i4.4
+    newobj .ctor
+    stfld queueIndexBuffer
+    ldarg.0
+    ldc.i4.s 120
+    newarr
+    stfld queueStateArray
+    ldarg.0
+    ldarg.0
+    ldfld queueStateArray
+    ldlen
+    conv.i4
+    ldc.i4.4
+    newobj .ctor
+    stfld queueStateBuffer
+    ldarg.0
+    ldc.i4.s 120
+    newarr
+    stfld recipeIndexArray
+    ldarg.0
+    ldarg.0
+    ldfld recipeIndexArray
+    ldlen
+    conv.i4
+    ldc.i4.4
+    newobj .ctor
+    stfld recipeIndexBuffer
+    ldarg.0
+    ldc.i4.s 120
+    newarr
+    stfld recipeStateArray
+    ldarg.0
+    ldarg.0
+    ldfld recipeStateArray
+    ldlen
+    conv.i4
+    ldc.i4.4
+    newobj .ctor
+    stfld recipeStateBuffer
+    ldarg.0
+    ldc.i4.s 120
+    newarr
+    stfld recipeProtoArray
+    ldarg.0
+    ldarg.0
+    ldfld queueBg
+    callvirt get_material
+    call Instantiate
+    stfld queueBgMat
+    ldarg.0
+    ldarg.0
+    ldfld queueIcons
+    callvirt get_material
+    call Instantiate
+    stfld queueIconMat
+    ldarg.0
+    ldarg.0
+    ldfld recipeBg
+    callvirt get_material
+    call Instantiate
+    stfld recipeBgMat
+    ldarg.0
+    ldarg.0
+    ldfld recipeIcons
+    callvirt get_material
+    call Instantiate
+    stfld recipeIconMat
+    ldarg.0
+    ldfld queueBg
+    ldarg.0
+    ldfld queueBgMat
+    callvirt set_material
+    ldarg.0
+    ldfld queueIcons
+    ldarg.0
+    ldfld queueIconMat
+    callvirt set_material
+    ldarg.0
+    ldfld recipeBg
+    ldarg.0
+    ldfld recipeBgMat
+    callvirt set_material
+    ldarg.0
+    ldfld recipeIcons
+    ldarg.0
+    ldfld recipeIconMat
+    callvirt set_material
+    ldarg.0
+    call SetMaterialProps
+    ldarg.0
+    ldfld typeButton1
+    ldc.i4.1
+    stfld data
+    ldarg.0
+    ldfld typeButton2
+    ldc.i4.2
+    stfld data
+    ldarg.0
+    ldarg.0
+    ldfld queueBg
+    callvirt get_gameObject
+    callvirt AddComponent
+    stfld evtQueue
+    ldarg.0
+    ldarg.0
+    ldfld recipeBg
+    callvirt get_gameObject
+    callvirt AddComponent
+    stfld evtRecipe
+    ldnull
+    stloc.0
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.2
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnQueueMouseDown
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld evtQueue
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.0
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnQueueMouseEnter
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld evtQueue
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.1
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnQueueMouseExit
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld evtQueue
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.2
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnRecipeMouseDown
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld evtRecipe
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.0
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnRecipeMouseEnter
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld evtRecipe
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    newobj .ctor
+    stloc.0
+    ldloc.0
+    ldc.i4.1
+    stfld eventID
+    ldloc.0
+    ldfld callback
+    ldarg.0
+    ldftn OnRecipeMouseExit
+    newobj .ctor
+    callvirt AddListener
+    ldarg.0
+    ldfld evtRecipe
+    callvirt get_triggers
+    ldloc.0
+    callvirt Add
+    ldarg.0
+    ldc.i4.s 10
+    newobj .ctor
+    stfld treeDownList
+    ldarg.0
+    ldc.i4.s 10
+    newobj .ctor
+    stfld treeUpList
+    ldarg.0
+    ldc.i4.s 100
+    newobj .ctor
+    stfld multipliers
+    ldarg.0
+    ldfld treeUpList
+    ldarg.0
+    ldfld treeUpPrefab
+    callvirt Add
+    ldarg.0
+    ldfld treeDownList
+    ldarg.0
+    ldfld treeDownPrefab
+    callvirt Add
+    ldarg.0
+    ldc.i4.s 14
+    newarr
+    stfld queueNumTexts
+    ret
+
+=== IL UIAssemblerWindow ===
+  -- RefreshRecipeIcons: not found
+  -- TestMouseRecipeIndex: not found
+  -- SetMaterialProps: not found
+  -- _OnCreate --
+    ldarg.0
+    ldfld playerInventory
+    callvirt _Create
+    ldarg.0
+    ldfld servingBox
+    callvirt _Create
+    ret
+  -- _OnOpen --
+    call get_localPlanet
+    brfalse
+    call get_localPlanet
+    ldfld factory
+    brfalse
+    ldarg.0
+    call get_localPlanet
+    ldfld factory
+    stfld factory
+    ldarg.0
+    ldarg.0
+    ldfld factory
+    ldfld factorySystem
+    stfld factorySystem
+    ldarg.0
+    ldarg.0
+    ldfld factory
+    ldfld powerSystem
+    stfld powerSystem
+    ldarg.0
+    call get_mainPlayer
+    stfld player
+    ldarg.0
+    ldfld windowTrans
+    ldarg.0
+    ldfld windowTrans
+    callvirt get_sizeDelta
+    ldfld x
+    ldc.r4 270
+    newobj .ctor
+    callvirt set_sizeDelta
+    ldarg.0
+    ldfld player
+    ldc.i4.0
+    ldc.i4.0
+    ldc.i4.0
+    callvirt SetHandItems
+    ldarg.0
+    ldfld player
+    brfalse.s
+    ldarg.0
+    ldfld player
+    callvirt get_package
+    ldarg.0
+    ldftn OnPlayerPackageSizeChange
+    newobj .ctor
+    callvirt add_onStorageSizeChange
+    ldarg.0
+    ldfld player
+    callvirt get_controller
+    ldfld actionInspect
+    ldarg.0
+    ldftn OnPlayerInspectFastFillIn
+    newobj .ctor
+    callvirt add_onFastFillIn
+    ldarg.0
+    call OnPlayerPackageSizeChange
+    ldarg.0
+    call OnAssemblerIdChange
+    ldarg.0
+    call RefreshAlarmSwitchRect
+    ldarg.0
+    call get_transform
+    callvirt SetAsLastSibling
+    ret
+
+=== IL UIStorageGrid ===
+  -- SetRectSize --
+    ldarg.0
+    ldfld rectTrans
+    ldnull
+    call op_Inequality
+    brfalse
+    ldarg.0
+    ldfld rectTrans
+    ldarg.0
+    ldfld colCount
+    ldc.i4.s 50
+    mul
+    ldc.i4.4
+    add
+    conv.r4
+    ldarg.0
+    ldfld rowCount
+    ldc.i4.s 50
+    mul
+    ldc.i4.4
+    add
+    conv.r4
+    newobj .ctor
+    callvirt set_sizeDelta
+    call get_isPlaying
+    brfalse.s
+    ldloca.s
+    ldarg.0
+    ldfld colCount
+    conv.r4
+    ldarg.0
+    ldfld rowCount
+    conv.r4
+    ldc.r4 0.04
+    ldc.r4 0.04
+    call .ctor
+    ldarg.0
+    ldfld bgImageMat
+    ldstr "_Grid"
+    ldloc.0
+    callvirt SetVector
+    ldarg.0
+    ldfld iconImageMat
+    ldstr "_Grid"
+    ldloc.0
+    callvirt SetVector
+    ldloca.s
+    ldc.r4 0.1
+    ldc.r4 0.1
+    ldc.r4 1.25
+    ldc.r4 1.25
+    call .ctor
+    ldarg.0
+    ldfld iconImageMat
+    ldstr "_Rect"
+    ldloc.1
+    callvirt SetVector
+    ret
+  -- OnStorageSizeChanged --
+    ldarg.0
+    ldfld storage
+    brtrue.s
+    ldarg.0
+    ldc.i4.1
+    stfld rowCount
+    br.s
+    ldarg.0
+    ldarg.0
+    ldfld storage
+    ldfld size
+    ldc.i4.1
+    sub
+    ldarg.0
+    ldfld colCount
+    div
+    ldc.i4.1
+    add
+    stfld rowCount
+    ldarg.0
+    call SetRectSize
+    ldarg.0
+    call DeactiveAllGridGraphics
+    ldc.i4.0
+    stloc.0
+    br.s
+    ldarg.0
+    ldloc.0
+    call CreateGridGraphic
+    ldloc.0
+    ldc.i4.1
+    add
+    stloc.0
+    ldloc.0
+    ldarg.0
+    ldfld colCount
+    ldarg.0
+    ldfld rowCount
+    mul
+    blt.s
+    ldarg.0
+    call OnStorageContentChanged
+    ret
+  -- _OnCreate --
+    ldarg.0
+    ldc.i4 400
+    newarr
+    stfld numTexts
+    ldarg.0
+    ldc.i4 400
+    newarr
+    stfld numbers
+    ldarg.0
+    ldc.i4 1024
+    newarr
+    stfld iconIndexArray
+    ldarg.0
+    ldarg.0
+    ldfld iconIndexArray
+    ldlen
+    conv.i4
+    ldc.i4.4
+    newobj .ctor
+    stfld iconIndexBuffer
+    ldarg.0
+    ldc.i4 1024
+    newarr
+    stfld stateArray
+    ldarg.0
+    ldarg.0
+    ldfld stateArray
+    ldlen
+    conv.i4
+    ldc.i4.4
+    newobj .ctor
+    stfld stateBuffer
+    ldarg.0
+    ldarg.0
+    ldfld bgImage
+    callvirt get_material
+    call Instantiate
+    stfld bgImageMat
+    ldarg.0
+    ldarg.0
+    ldfld iconImage
+    callvirt get_material
+    call Instantiate
+    stfld iconImageMat
+    ldarg.0
+    ldfld bgImageMat
+    ldstr "_StateBuffer"
+    ldarg.0
+    ldfld stateBuffer
+    callvirt SetBuffer
+    ldarg.0
+    ldfld iconImageMat
+    ldstr "_StateBuffer"
+    ldarg.0
+    ldfld stateBuffer
+    callvirt SetBuffer
+    ldarg.0
+    ldfld iconImageMat
+    ldstr "_IndexBuffer"
+    ldarg.0
+    ldfld iconIndexBuffer
+    callvirt SetBuffer
+    ldarg.0
+    ldfld bgImage
+    ldarg.0
+    ldfld bgImageMat
+    callvirt set_material
+    ldarg.0
+    ldfld iconImage
+    ldarg.0
+    ldfld iconImageMat
+    callvirt set_material
+    ldstr "UI/Prefabs/mid-click-tip"
+    call Load
+    stloc.0
+    ldarg.0
+    ldloc.0
+    ldarg.0
+    call get_transform
+    call Instantiate
+    stfld midClickTipRt
+    ldsfld openedStorages
+    brtrue.s
+    newobj .ctor
+    stsfld openedStorages
+    ret
+
+=== UIAssemblerWindow fields ===
+  RectTransform windowTrans
+  Text titleText
+  Image powerIcon
+  Text powerText
+  Text stateText
+  Text transferTipText
+  UIButton alarmSwitchButton
+  Text alarmSwitchText
+  RectTransform alarmSwitchRect
+  UIStorageGrid playerInventory
+  RectTransform playerInventoryGroup
+  RectTransform recipeGroup
+  RectTransform produceGroup
+  UIButton recipeButton
+  UIButton productButton0
+  UIButton productButton1
+  UIButton resetButton
+  UIButton copyButton
+  UIButton pasteButton
+  UIGenericMenuButton menuButton
+  Image productProgress0
+  Image productProgress1
+  Image extraProductProgress0
+  Image extraProductProgress1
+  Image productIcon0
+  Image productIcon1
+  Text productCountText0
+  Text productCountText1
+  RectTransform productGroup
+  RectTransform speedGroup
+  RectTransform servingGroup
+  UIStorageGrid servingBox
+  Image[] speedArrows
+  Text speedText
+  Color powerNormalColor
+  Color powerLowColor
+  Color powerNormalIconColor
+  Color powerLowIconColor
+  Color powerOffColor
+  Color idleColor
+  Color workNormalColor
+  Color workStoppedColor
+  Color marqueeOnColor
+  Color marqueeOffColor
+  RectTransform incInfoGroup
+  Text incEffectValueText
+  Text incEffectValueText2
+  Text incEffectTypeText
+  Image incSwitchButtonImage
+  Image incSwitchButtonThumb
+  Button incSwitchButton
+  Color incButtonColor1
+  Color incButtonColor2
+  Color incTextColor1
+  Color incTextColor2
+  Int32 _assemblerId
+  Int32 servingBoxRecipeId
+  PlanetFactory factory
+  FactorySystem factorySystem
+  PowerSystem powerSystem
+  Player player
+  StorageComponent servingStorage
+  StringBuilder powerServedSB
+  String updateProfiler
+  String lateUpdateProfiler
+  Boolean unsafeGameObjectState
+

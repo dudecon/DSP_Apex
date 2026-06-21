@@ -72,8 +72,8 @@ namespace MegaStructuresUI
             textGO.transform.SetParent(canvas.transform, false);
 
             Text text = textGO.AddComponent<Text>();
-            text.text = "DSP Apex - Basic Test Mod";
-            text.fontSize = 22;
+            text.text = "DSP Apex - Megastructure UI loaded";
+            text.fontSize = 12;
             text.color = new Color(0.3f, 0.85f, 1f);
             text.horizontalOverflow = HorizontalWrapMode.Overflow;
             text.verticalOverflow = VerticalWrapMode.Overflow;
