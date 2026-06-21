@@ -126,12 +126,11 @@ namespace RecipeRebalance
             stoneBrick?.FindPreTech();
             cachedSmeltPreTech = ResolveSmeltPreTech(smeltTechTemplate);
 
-            // Dedicated row IX — no overlap with vanilla handcraft/smelter slots (e.g. combat drones at row VII).
-            int[] smeltSlots = RecipeGrid.GetModSmeltSlots(5, logger);
-            int chemGrid = (kimberliteChem?.GridIndex ?? ApexIds.GridChemicalBase) + 10;
-            int particleGrid = (artificialStarTemplate?.GridIndex ?? ApexIds.GridParticleBase) + 10;
+            // Replicator tab III (Apex) — all mod recipes in one matrix; UI provided by MegaStructuresUI.
+            const int modRecipeCount = 11;
+            int[] apexSlots = RecipeGrid.GetApexTabSlots(modRecipeCount, logger);
 
-            int Slot(int index, int fallback) => index < smeltSlots.Length ? smeltSlots[index] : fallback;
+            int Slot(int index, int fallback) => index < apexSlots.Length ? apexSlots[index] : fallback;
 
             AddSmeltRecipe(
                 ApexIds.RecipeStoneToIronOre,
@@ -142,7 +141,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.IronOre },
                 new[] { 1 },
                 240,
-                Slot(0, RecipeGrid.Encode(1, RecipeGrid.ModSmeltRow, 1)));
+                Slot(0, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 1)));
 
             AddSmeltRecipe(
                 ApexIds.RecipeStoneToCopperOre,
@@ -153,7 +152,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.CopperOre },
                 new[] { 1 },
                 240,
-                Slot(1, RecipeGrid.Encode(1, RecipeGrid.ModSmeltRow, 2)));
+                Slot(1, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 2)));
 
             AddSmeltRecipe(
                 ApexIds.RecipeStoneToSiliconOre,
@@ -164,7 +163,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.SiliconOre },
                 new[] { 1 },
                 300,
-                Slot(2, RecipeGrid.Encode(1, RecipeGrid.ModSmeltRow, 3)));
+                Slot(2, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 3)));
 
             AddSmeltRecipe(
                 ApexIds.RecipeStoneToTitaniumOre,
@@ -175,7 +174,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.TitaniumOre },
                 new[] { 1 },
                 360,
-                Slot(3, RecipeGrid.Encode(1, RecipeGrid.ModSmeltRow, 4)));
+                Slot(3, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 4)));
 
             AddSmeltRecipe(
                 ApexIds.RecipeStoneToCoal,
@@ -186,7 +185,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.Coal },
                 new[] { 1 },
                 180,
-                Slot(4, RecipeGrid.Encode(1, RecipeGrid.ModSmeltRow, 5)));
+                Slot(4, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 5)));
 
             AddChemicalRecipe(
                 ApexIds.RecipeStoneToKimberlite,
@@ -197,7 +196,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.KimberliteOre },
                 new[] { 1 },
                 480,
-                chemGrid + 0);
+                Slot(5, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 6)));
 
             AddChemicalRecipe(
                 ApexIds.RecipeStoneToFractalSilicon,
@@ -208,7 +207,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.FractalSilicon },
                 new[] { 1 },
                 600,
-                chemGrid + 1);
+                Slot(6, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 7)));
 
             AddParticleRecipe(
                 ApexIds.RecipeHeliumToCarbon,
@@ -219,7 +218,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.Carbon },
                 new[] { 1 },
                 240,
-                particleGrid + 0);
+                Slot(7, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 8)));
 
             AddParticleRecipe(
                 ApexIds.RecipeCarbonToStone,
@@ -230,7 +229,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.Stone },
                 new[] { 5 },
                 180,
-                particleGrid + 1);
+                Slot(8, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 9)));
 
             AddParticleRecipe(
                 ApexIds.RecipeCarbonToStrangeMatter,
@@ -241,7 +240,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.StrangeMatter },
                 new[] { 1 },
                 720,
-                particleGrid + 2);
+                Slot(9, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 10)));
 
             AddParticleRecipe(
                 ApexIds.RecipeCarbonToUnipolarMagnet,
@@ -252,7 +251,7 @@ namespace RecipeRebalance
                 new[] { ApexIds.UnipolarMagnet },
                 new[] { 1 },
                 900,
-                particleGrid + 3);
+                Slot(10, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 11)));
 
             logger.LogInfo("RecipeRebalance: registered stone, fusion, and exotic transmutation recipes.");
         }

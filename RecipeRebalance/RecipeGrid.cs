@@ -5,10 +5,11 @@ namespace RecipeRebalance
 {
     internal static class RecipeGrid
     {
-        private const int SmelterTab = 1;
+        /// <summary>Replicator tab III — dedicated DSP Apex recipe matrix.</summary>
+        internal const int ApexTab = 3;
 
-        /// <summary>Dedicated smelter matrix row for mod stone smelts (row IX — beyond vanilla rows I–VIII).</summary>
-        internal const int ModSmeltRow = 9;
+        internal const int ColumnCount = 14;
+        internal const int RowCount = 8;
 
         internal static int Encode(int tab, int row, int column)
         {
@@ -16,16 +17,18 @@ namespace RecipeRebalance
         }
 
         /// <summary>
-        /// Returns consecutive slots on smelter tab row IX (e.g. 1901–1905).
+        /// Returns consecutive slots on the Apex tab (e.g. 3101, 3102, … 3114, 3201, …).
         /// </summary>
-        internal static int[] GetModSmeltSlots(int count, ManualLogSource logger)
+        internal static int[] GetApexTabSlots(int count, ManualLogSource logger)
         {
             var slots = new int[count];
             var collisions = new List<string>();
 
             for (int i = 0; i < count; i++)
             {
-                int grid = Encode(SmelterTab, ModSmeltRow, i + 1);
+                int row = i / ColumnCount + 1;
+                int column = i % ColumnCount + 1;
+                int grid = Encode(ApexTab, row, column);
                 slots[i] = grid;
 
                 var existing = FindRecipeAtGrid(grid);
@@ -36,7 +39,7 @@ namespace RecipeRebalance
             if (collisions.Count > 0)
             {
                 logger.LogWarning(
-                    $"RecipeRebalance: row IX smelt slots collide with existing recipes: [{string.Join(", ", collisions)}]");
+                    $"RecipeRebalance: Apex tab slots collide with existing recipes: [{string.Join(", ", collisions)}]");
             }
 
             return slots;

@@ -61,6 +61,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RecipeRebalance\RecipeRebalance.csproj" />
+  </ItemGroup>
+
   <Target Name="CopyToPlugins" AfterTargets="Build">
     <MakeDir Directories="$(DSPPluginsPath)" />
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DSPPluginsPath)" />

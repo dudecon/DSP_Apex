@@ -21,11 +21,6 @@ namespace RecipeRebalance
         public const int Diamond = 1118;
         public const int EnergeticGraphite = 1109;
 
-        // Recipe grid slots (building UI matrix positions)
-        public const int GridSmeltBase = 1181;
-        public const int GridChemicalBase = 2681;
-        public const int GridParticleBase = 6281;
-
         // DSP Apex items (assigned in AssignRuntimeIds)
         public static int Helium;
         public static int Carbon;
