@@ -22,6 +22,7 @@ namespace RecipeRebalance
             ApexIds.AssignRuntimeIds(logger);
             RegisterItems(logger);
             RegisterRecipes(logger);
+            PatchDeuteriumFusion(logger);
 
             try
             {
@@ -32,7 +33,8 @@ namespace RecipeRebalance
                 logger.LogError($"RecipeRebalance: RefreshRecipeLinks failed: {ex}");
             }
 
-            PatchDeuteriumFusion(logger);
+            PreloadModItems(logger);
+            ModItemIconLoader.Apply(logger);
             ReloadIcons();
             LogRegistrationDiagnostics(logger);
 
@@ -48,28 +50,42 @@ namespace RecipeRebalance
 
             GameMain.iconSet.loaded = false;
             GameMain.iconSet.Create();
+            GameMain.iconSet.itemIconIndexBuffer?.SetData(GameMain.iconSet.itemIconIndex);
+            GameMain.iconSet.recipeIconIndexBuffer?.SetData(GameMain.iconSet.recipeIconIndex);
+        }
+
+        private static void PreloadModItems(ManualLogSource logger)
+        {
+            foreach (var itemId in new[] { ApexIds.Helium })
+            {
+                if (!LDB.items.Exist(itemId))
+                    continue;
+
+                var item = LDB.items.Select(itemId);
+                try
+                {
+                    ProtoUtil.PreloadItem(item);
+                }
+                catch (System.Exception ex)
+                {
+                    logger.LogWarning(
+                        $"RecipeRebalance: Preload skipped for item {itemId} ({item?.Name}): {ex.Message}");
+                }
+            }
         }
 
         private static void RegisterItems(ManualLogSource logger)
         {
-            var hydrogen = LDB.items.Select(ApexIds.Hydrogen);
-            var graphite = LDB.items.Select(ApexIds.EnergeticGraphite);
+            var deuterium = LDB.items.Select(ApexIds.Deuterium);
 
             RegisterFluidItem(
                 ApexIds.Helium,
                 "Apex Helium",
-                "Helium produced by deuterium fusion. Feed into carbon synthesis.",
-                hydrogen?.IconPath ?? "Icons/Item/1120",
-                hydrogen?.GridIndex ?? 0);
+                "Helium produced by deuterium fusion. Feed into energetic graphite synthesis.",
+                deuterium?.IconPath ?? "Icons/Item/1121",
+                deuterium?.GridIndex ?? 0);
 
-            RegisterMaterialItem(
-                ApexIds.Carbon,
-                "Apex Carbon",
-                "Elemental carbon from triple-helium fusion. Used in late transmutation chains.",
-                graphite?.IconPath ?? "Icons/Item/1104",
-                graphite?.GridIndex ?? 0);
-
-            logger.LogInfo("RecipeRebalance: registered Helium and Carbon items.");
+            logger.LogInfo("RecipeRebalance: registered Helium item.");
         }
 
         private static void RegisterFluidItem(int id, string name, string description, string iconPath, int gridIndex)
@@ -85,26 +101,6 @@ namespace RecipeRebalance
                 Type = EItemType.Material,
                 StackSize = 100,
                 IsFluid = true,
-                IconPath = iconPath,
-                GridIndex = gridIndex,
-                Productive = true
-            };
-            ProtoRegistry.AddItem(item);
-        }
-
-        private static void RegisterMaterialItem(int id, string name, string description, string iconPath, int gridIndex)
-        {
-            if (LDB.items.Exist(id))
-                return;
-
-            var item = new ItemProto
-            {
-                ID = id,
-                Name = name,
-                Description = description,
-                Type = EItemType.Material,
-                StackSize = 100,
-                IsFluid = false,
                 IconPath = iconPath,
                 GridIndex = gridIndex,
                 Productive = true
@@ -202,7 +198,7 @@ namespace RecipeRebalance
                 ApexIds.RecipeStoneToFractalSilicon,
                 "Apex Stone to Fractal Silicon",
                 fractalChem ?? siliconSmelt ?? stoneBrick,
-                new[] { ApexIds.Stone, ApexIds.Carbon },
+                new[] { ApexIds.Stone, ApexIds.EnergeticGraphite },
                 new[] { 25, 5 },
                 new[] { ApexIds.FractalSilicon },
                 new[] { 1 },
@@ -210,21 +206,21 @@ namespace RecipeRebalance
                 Slot(6, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 7)));
 
             AddParticleRecipe(
-                ApexIds.RecipeHeliumToCarbon,
-                "Apex Triple-Helium to Carbon",
+                ApexIds.RecipeHeliumToEnergeticGraphite,
+                "Apex Triple-Helium to Energetic Graphite",
                 artificialStarTemplate ?? stoneBrick,
                 new[] { ApexIds.Helium },
                 new[] { 3 },
-                new[] { ApexIds.Carbon },
+                new[] { ApexIds.EnergeticGraphite },
                 new[] { 1 },
                 240,
                 Slot(7, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 8)));
 
             AddParticleRecipe(
-                ApexIds.RecipeCarbonToStone,
-                "Apex Carbon Fusion to Stone",
+                ApexIds.RecipeEnergeticGraphiteToStone,
+                "Apex Energetic Graphite Fusion to Stone",
                 artificialStarTemplate ?? stoneBrick,
-                new[] { ApexIds.Carbon },
+                new[] { ApexIds.EnergeticGraphite },
                 new[] { 2 },
                 new[] { ApexIds.Stone },
                 new[] { 5 },
@@ -232,10 +228,10 @@ namespace RecipeRebalance
                 Slot(8, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 9)));
 
             AddParticleRecipe(
-                ApexIds.RecipeCarbonToStrangeMatter,
-                "Apex Carbon Transmutation to Strange Matter",
+                ApexIds.RecipeEnergeticGraphiteToStrangeMatter,
+                "Apex Energetic Graphite Transmutation to Strange Matter",
                 strangeRecipe ?? artificialStarTemplate ?? stoneBrick,
-                new[] { ApexIds.Carbon, ApexIds.Deuterium, ApexIds.Hydrogen },
+                new[] { ApexIds.EnergeticGraphite, ApexIds.Deuterium, ApexIds.Hydrogen },
                 new[] { 10, 20, 40 },
                 new[] { ApexIds.StrangeMatter },
                 new[] { 1 },
@@ -243,10 +239,10 @@ namespace RecipeRebalance
                 Slot(9, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 10)));
 
             AddParticleRecipe(
-                ApexIds.RecipeCarbonToUnipolarMagnet,
-                "Apex Carbon Transmutation to Unipolar Magnet",
+                ApexIds.RecipeEnergeticGraphiteToUnipolarMagnet,
+                "Apex Energetic Graphite Transmutation to Unipolar Magnet",
                 strangeRecipe ?? artificialStarTemplate ?? stoneBrick,
-                new[] { ApexIds.Carbon, ApexIds.Helium, ApexIds.GravitonLens },
+                new[] { ApexIds.EnergeticGraphite, ApexIds.Helium, ApexIds.GravitonLens },
                 new[] { 8, 12, 1 },
                 new[] { ApexIds.UnipolarMagnet },
                 new[] { 1 },
@@ -674,7 +670,7 @@ namespace RecipeRebalance
                 ApexIds.UnipolarMagnet,
                 ApexIds.GravitonLens,
                 ApexIds.Helium,
-                ApexIds.Carbon
+                ApexIds.EnergeticGraphite
             };
 
             ItemProto.InitItemIds();

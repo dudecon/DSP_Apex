@@ -35,6 +35,10 @@
       <HintPath>..\references\UnityEngine.UIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>..\references\UnityEngine.ImageConversionModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="BepInEx">
       <HintPath>..\references\BepInEx.dll</HintPath>
       <Private>false</Private>
@@ -45,9 +49,14 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ItemIconFiles Include="Icons\Item\*.png" />
+  </ItemGroup>
+
   <Target Name="CopyToPlugins" AfterTargets="Build">
     <MakeDir Directories="$(DSPPluginsPath)" />
     <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DSPPluginsPath)" />
+    <Copy SourceFiles="@(ItemIconFiles)" DestinationFiles="@(ItemIconFiles->'$(DSPPluginsPath)\Icons\Item\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
     <Message Text="Copied $(TargetFileName) to $(DSPPluginsPath)" Importance="high" />
   </Target>
 

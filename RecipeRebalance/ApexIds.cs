@@ -23,7 +23,6 @@ namespace RecipeRebalance
 
         // DSP Apex items (assigned in AssignRuntimeIds)
         public static int Helium;
-        public static int Carbon;
 
         // DSP Apex recipes (assigned in AssignRuntimeIds)
         public static int RecipeStoneToIronOre;
@@ -33,21 +32,20 @@ namespace RecipeRebalance
         public static int RecipeStoneToCoal;
         public static int RecipeStoneToKimberlite;
         public static int RecipeStoneToFractalSilicon;
-        public static int RecipeHeliumToCarbon;
-        public static int RecipeCarbonToStone;
-        public static int RecipeCarbonToStrangeMatter;
-        public static int RecipeCarbonToUnipolarMagnet;
+        public static int RecipeHeliumToEnergeticGraphite;
+        public static int RecipeEnergeticGraphiteToStone;
+        public static int RecipeEnergeticGraphiteToStrangeMatter;
+        public static int RecipeEnergeticGraphiteToUnipolarMagnet;
 
         internal static void AssignRuntimeIds(BepInEx.Logging.ManualLogSource logger)
         {
             int itemId = FindMaxId(LDB.items?.dataArray);
             Helium = ++itemId;
-            Carbon = ++itemId;
 
-            if (Carbon > ItemProto.kMaxProtoId)
+            if (Helium > ItemProto.kMaxProtoId)
             {
                 throw new System.InvalidOperationException(
-                    $"RecipeRebalance: mod item IDs {Helium}-{Carbon} exceed ItemProto.kMaxProtoId ({ItemProto.kMaxProtoId}).");
+                    $"RecipeRebalance: mod item ID {Helium} exceeds ItemProto.kMaxProtoId ({ItemProto.kMaxProtoId}).");
             }
 
             int recipeId = FindMaxId(LDB.recipes?.dataArray);
@@ -58,14 +56,14 @@ namespace RecipeRebalance
             RecipeStoneToCoal = ++recipeId;
             RecipeStoneToKimberlite = ++recipeId;
             RecipeStoneToFractalSilicon = ++recipeId;
-            RecipeHeliumToCarbon = ++recipeId;
-            RecipeCarbonToStone = ++recipeId;
-            RecipeCarbonToStrangeMatter = ++recipeId;
-            RecipeCarbonToUnipolarMagnet = ++recipeId;
+            RecipeHeliumToEnergeticGraphite = ++recipeId;
+            RecipeEnergeticGraphiteToStone = ++recipeId;
+            RecipeEnergeticGraphiteToStrangeMatter = ++recipeId;
+            RecipeEnergeticGraphiteToUnipolarMagnet = ++recipeId;
 
             logger.LogInfo(
-                $"RecipeRebalance: runtime IDs — items {Helium}, {Carbon}; " +
-                $"recipes {RecipeStoneToIronOre}–{RecipeCarbonToUnipolarMagnet}");
+                $"RecipeRebalance: runtime IDs — item {Helium}; " +
+                $"recipes {RecipeStoneToIronOre}–{RecipeEnergeticGraphiteToUnipolarMagnet}");
         }
 
         private static int FindMaxId(Proto[] protos)
