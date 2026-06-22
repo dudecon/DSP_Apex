@@ -12,12 +12,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        if (args.Length > 0 && args[0] == "tip")
-        {
-            DumpTipIl.Run();
-            return;
-        }
-
         var repoRoot = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", ".."));
         var refsDir = Path.Combine(repoRoot, "references");
         var managed = @"C:\Program Files (x86)\Steam\steamapps\common\Dyson Sphere Program\DSPGAME_Data\Managed";

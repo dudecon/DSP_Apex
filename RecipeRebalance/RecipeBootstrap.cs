@@ -34,6 +34,7 @@ namespace RecipeRebalance
             }
 
             PreloadModItems(logger);
+            ModItemHintUtil.ApplyHeliumHints(logger);
             ModItemIconLoader.Apply(logger);
             ReloadIcons();
             LogRegistrationDiagnostics(logger);
@@ -83,7 +84,7 @@ namespace RecipeRebalance
                 "Apex Helium",
                 "Helium produced by deuterium fusion. Feed into energetic graphite synthesis.",
                 deuterium?.IconPath ?? "Icons/Item/1121",
-                deuterium?.GridIndex ?? 0);
+                0);
 
             logger.LogInfo("RecipeRebalance: registered Helium item.");
         }
@@ -673,7 +674,8 @@ namespace RecipeRebalance
                 ApexIds.EnergeticGraphite
             };
 
-            ItemProto.InitItemIds();
+            // Do not call InitItemIds here — it rebuilds itemIds after mod items are appended,
+            // which makes Preload map new IDs onto stale vanilla itemNames (wrong hint text).
             ItemProto.InitItemIndices();
             RecipeProto.InitRecipeItems();
             PreloadAllRecipes(Plugin.Log);
