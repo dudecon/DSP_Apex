@@ -24,9 +24,9 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 
 - The core recipe updates, shared by several of the other mods.
 - Miners not at ore spots produce stone (low rate).
-- Ore crafting from stone (like Silicon ore) to allow low-efficiency production anywhere.
-- Fusion product chains. Deut Fusion produces Helium. Triple-helium to produce Carbon. Carbon fusion to produce stone.
-- More recipes for a path to all the exotic materials using mod 4 & 6, but extensible with other non-pack mods if desired.
+- (DONE) Ore crafting from stone (like Silicon ore) to allow low-efficiency production anywhere.
+- (IN PROGRESS) Fusion product chains. Deut Fusion produces Helium. Triple-helium to produce Energetic Graphite. Energetic Graphite fusion to produce stone.
+- (IN PROGRESS) More recipes for a path to all the exotic materials using mod 4 & 6, but extensible with other non-pack mods if desired.
 
 
 ### 1. DysonHarvester
@@ -38,14 +38,14 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 
 ### 2. OrbitalRings
 
-- Buildable equatorial rings around planets (frames/struts as connecting elements, similar to Dyson Sphere frames).
-- Rocky planets: Act as **power relays** enabling ray receivers to work on the dark side (mirroring vanilla planets inside a sphere).
-- Gas giants: Enhanced atmospheric harvesting, fitting vanilla OC pattern.
+- Buildable swarms/rings/shells around planets (frames/struts as connecting elements, similar to Dyson Sphere frames). Fewer layers than stellar enclosures.
+- Rocky planets: microsats act as **power relays** enabling ray receivers to work on the dark side (like vanilla planets inside a sphere).
+- Gas giants: Enhanced atmospheric harvesting, fitting vanilla OC pattern, use Orbital Collectors as nodes in shells.
 - Buildable struts/frames + panels for modularity. Supports later module integration.
 
 ### 3. OrbitalInfrastructure
 
-- **Space Elevators**: On suitable planets; connect surface to orbit for high-throughput logistics and power.
+- **Space Elevators**: On suitable planets; connect surface to orbit for high-throughput logistics and power. Vanilla 
 - **Planetary Satellite Swarms**: Small orbital swarms for local power, relays, or early Dark Fog defense.
 - **Modular Orbital Stations**: Fixed expandable platforms in orbit around planets/stars. Start small, grow into habitats/factories with docking.
 
