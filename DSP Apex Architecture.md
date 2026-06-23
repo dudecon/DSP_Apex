@@ -5,6 +5,8 @@
 
 **Purpose:** This document captures the full vision for a modular Dyson Sphere Program mod suite. It is intended to be used as input for Grok Build or similar implementation tools. All features, refinements, and discussions from the conversation are summarized here, including core mods 1-9 and peripheral/side mods 10-21.
 
+**Implementation status:** Progress tracking, completed work, to-do lists, and the build roadmap live in [README.md](README.md) and each pack's `README.md` — not in this document.
+
 ## Overall Vision & Philosophy
 
 The suite bridges the scale gap between terrestrial factories and full stellar Dyson Spheres by adding a coherent mid-to-late game orbital civilization layer. It emphasizes:
@@ -24,9 +26,9 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 
 - The core recipe updates, shared by several of the other mods.
 - Miners not at ore spots produce stone (low rate).
-- (DONE) Ore crafting from stone (like Silicon ore) to allow low-efficiency production anywhere.
-- (IN PROGRESS) Fusion product chains. Deut Fusion produces Helium. Triple-helium to produce Energetic Graphite. Energetic Graphite fusion to produce stone.
-- (IN PROGRESS) More recipes for a path to all the exotic materials using mod 4 & 6, but extensible with other non-pack mods if desired.
+- Ore crafting from stone (like Silicon ore) to allow low-efficiency production anywhere.
+- Fusion product chains: Deut Fusion produces Helium; triple-helium to produce Energetic Graphite; Energetic Graphite fusion to produce stone.
+- Recipes for a path to exotic materials using mod 4 & 6, extensible with other non-pack mods if desired.
 
 
 ### 1. DysonHarvester
@@ -151,22 +153,3 @@ Environmental specialization: Lava planets reduce refining energy costs but exce
 - **Compatibility**: Designed to work alongside GalacticScale, Dark Fog, etc. Optional inter-mod dependencies.
 - **Theming**: Dyson Sphere as ultimate resource generator, power relay network, weapon platform, and mobile empire core.
 - **Manual vs Automated**: Handmade mode for precision; UI/modules for scale.
-
-## Implementation Priorities & Roadmap Suggestion
-
-- Start with **DysonHarvester** (foundational, high impact).
-- Then **OrbitalRings** + **HandmadeDyson**.
-- Follow with UI/abstraction layer, production mods, weapons, exotics, mover.
-- Use BepInEx + Harmony for patching. Reuse vanilla assets heavily.
-- Test iteratively; maintain separate mod packages.
-
-## Implementation Notes
-
-- Use BepInEx + Harmony. Reuse vanilla assets heavily.
-- Maintain separate packages for modularity.
-- Test compatibility with GalacticScale, Dark Fog, etc.
-- The document is self-contained and ready for implementation.
-
----
-
-This document contains every major detail and refinement from the full conversation. All core and peripheral features are included.
