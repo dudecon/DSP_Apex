@@ -39,15 +39,15 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 ### 2. OrbitalRings
 
 - Buildable swarms/rings/shells around planets (frames/struts as connecting elements, similar to Dyson Sphere frames). Fewer layers than stellar enclosures.
-- Rocky planets: microsats act as **power relays** enabling ray receivers to work on the dark side (like vanilla planets inside a sphere).
-- Gas giants: Enhanced atmospheric harvesting, fitting vanilla OC pattern, use Orbital Collectors as nodes in shells.
-- Buildable struts/frames + panels for modularity. Supports later module integration.
+- Rocky planets: microsats act as **power relays** enabling ray receivers to work on the dark side (like vanilla planets inside a sphere) as well as a **sensor network** for missiles targeting Dark Fog units, incentivizing building multiple swarms for full sensor coverage.
+- Gas giants: Enhanced atmospheric harvesting, fitting vanilla OC pattern, use Orbital Collectors as nodes in shells, with swarms marginally increasing the harvest rate, and.
+- Buildable struts/frames + panels for modularity and 0G infrastructure. Supports later module integration.
 
 ### 3. OrbitalInfrastructure
 
-- **Space Elevators**: On suitable planets; connect surface to orbit for high-throughput logistics and power. Vanilla 
-- **Planetary Satellite Swarms**: Small orbital swarms for local power, relays, or early Dark Fog defense.
-- **Modular Orbital Stations**: Fixed expandable platforms in orbit around planets/stars. Start small, grow into habitats/factories with docking.
+- **Space Elevators**: On suitable planets; connect surface to orbit for high-throughput logistics and power. Re-purpose Vanilla Logistics towers?
+- **Planetary Satellite Swarms**: Small orbital swarms for local power, relays, or Dark Fog detection and targeting. 
+- **Modular Orbital Stations**: Fixed expandable platforms in orbit around planets/stars. Start small, grow into habitats/factories with docking and consutruction. Uses the Dyson Sphere Construction and Planning interface.
 
 ### 4. ZeroGProduction
 
@@ -61,6 +61,7 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 - **Orbital Modules**: Replace blueprints at orbital scale. Players design/optimize enclosed production blocks that snap into megastructures.
 - Procedural generation of external visuals (glowing panels, struts, lights, antennas) based on internal allocation. Fully enclosed modules for performance; optional zoom-in for factory detail.
 - Abstracted simulation at large scales while retaining factory optimization feel.
+- General UI hub, serves the other mods in the suite.
 
 ### 6. DysonWeapons
 
@@ -79,9 +80,9 @@ Core themes: Resource mastery, orbital infrastructure, exotic discovery, weaponi
 
 ### 8. HandmadeDyson
 
-- Manual construction mode with Icarus/mech.
+- Manual construction with Icarus/mech of orbital megastructures already laid out in the Dyson Sphere blueprint (plus anything from any of the other mods).
 - Land and build directly on orbital megastructures, rings, stations, factory ships, accelerator segments, etc. (similar to placing vanilla Orbital Collectors).
-- Preserves hands-on satisfaction for key pieces; complements automated/UI systems.
+- Preserves hands-on satisfaction for key pieces; complements automated/UI systems, rewards precise navigation in cruise mode.
 
 ### 9. ExoticStars
 
@@ -95,11 +96,11 @@ These are optional expansions. They are not core but integrate well. (Note: An e
 
 ### 10. TimelineScrubber
 
-Timelapse mode with fast-forward, interpolation/extrapolation. Save games as nodes/branch points with limited rewind.
+Timelapse mode with fast-forward, interpolation/extrapolation. Save games as nodes/branch points with limited rewind. Use the "statistics view" stats for extrapolation.
 
 ### 11. SelfPropagation
 
-Autonomous sub-agents that independently build infrastructure and expand the empire on multiple fronts.
+Autonomous sub-agents that independently build infrastructure and expand the empire on multiple fronts. Automatic blueprint generation to increase production of resources that are in demand.
 
 ### 12. TerraformingReGreening
 
@@ -115,11 +116,11 @@ Deep mantle/core mines and true layered ecumenopolis architecture.
 
 ### 15. OrbitalShipyards
 
-Low-energy satellite launchers, large vessel repair/replication, mass-production of sphere components.
+Low-energy satellite launchers, large vessel repair/replication, mass-production of entire sphere components instead of sending up hundreds of individual microsats.
 
 ### 16. DysonSwarm2
 
-Expanded swarm types beyond vanilla power: collectors, construction, combat, sensor swarms (and others as desired).
+Expanded swarm types beyond vanilla power: collectors, construction, combat, sensor swarms (and others as desired, expand swarm types to fit the themes of the mod-suite).
 
 ### 17. QuantumLogistics
 
