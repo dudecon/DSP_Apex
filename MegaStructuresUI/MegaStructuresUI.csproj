@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
@@ -80,4 +80,9 @@
     <Message Text="Copied $(TargetFileName) to $(DSPPluginsPath)" Importance="high" />
   </Target>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+  <Import Project="..\Common\DspApex.Common.targets" />
 </Project>

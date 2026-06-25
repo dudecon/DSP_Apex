@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BepInEx.Logging;
+using DspApex.Common;
 
 namespace RecipeRebalance
 {
@@ -106,7 +107,7 @@ namespace RecipeRebalance
                 GridIndex = gridIndex,
                 Productive = true
             };
-            ProtoRegistry.AddItem(item);
+            DspApex.Common.ProtoRegistry.AddItem(item, Plugin.Log);
         }
 
         private static void RegisterRecipes(ManualLogSource logger)
@@ -124,7 +125,7 @@ namespace RecipeRebalance
             cachedSmeltPreTech = ResolveSmeltPreTech(smeltTechTemplate);
 
             // Replicator tab III (Apex) — all mod recipes in one matrix; UI provided by MegaStructuresUI.
-            const int modRecipeCount = 11;
+            const int modRecipeCount = 12;
             int[] apexSlots = RecipeGrid.GetApexTabSlots(modRecipeCount, logger);
 
             int Slot(int index, int fallback) => index < apexSlots.Length ? apexSlots[index] : fallback;
@@ -249,6 +250,17 @@ namespace RecipeRebalance
                 new[] { 1 },
                 900,
                 Slot(10, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 11)));
+
+            AddParticleRecipe(
+                ApexIds.RecipeEnergeticGraphiteToFireIce,
+                "Apex Energetic Graphite Transmutation to Fire Ice",
+                strangeRecipe ?? artificialStarTemplate ?? stoneBrick,
+                new[] { ApexIds.EnergeticGraphite, ApexIds.Hydrogen, ApexIds.Deuterium },
+                new[] { 6, 30, 10 },
+                new[] { ApexIds.FireIce },
+                new[] { 1 },
+                600,
+                Slot(11, RecipeGrid.Encode(RecipeGrid.ApexTab, 1, 12)));
 
             logger.LogInfo("RecipeRebalance: registered stone, fusion, and exotic transmutation recipes.");
         }
@@ -403,7 +415,7 @@ namespace RecipeRebalance
             try
             {
                 if (!LDB.recipes.Exist(id))
-                    ProtoRegistry.AddRecipe(recipe);
+                    DspApex.Common.ProtoRegistry.AddRecipe(recipe, Plugin.Log);
             }
             catch (System.Exception ex)
             {
@@ -671,7 +683,8 @@ namespace RecipeRebalance
                 ApexIds.UnipolarMagnet,
                 ApexIds.GravitonLens,
                 ApexIds.Helium,
-                ApexIds.EnergeticGraphite
+                ApexIds.EnergeticGraphite,
+                ApexIds.FireIce
             };
 
             // Do not call InitItemIds here — it rebuilds itemIds after mod items are appended,

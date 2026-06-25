@@ -1,3 +1,5 @@
+using DspApex.Common;
+
 namespace RecipeRebalance
 {
     /// <summary>Vanilla and DSP Apex proto IDs. Mod IDs are assigned at runtime from kMaxProtoId.</summary>
@@ -20,6 +22,7 @@ namespace RecipeRebalance
         public const int CrystalSilicon = 1115;
         public const int Diamond = 1118;
         public const int EnergeticGraphite = 1109;
+        public const int FireIce = 1012;
 
         // DSP Apex items (assigned in AssignRuntimeIds)
         public static int Helium;
@@ -36,10 +39,11 @@ namespace RecipeRebalance
         public static int RecipeEnergeticGraphiteToStone;
         public static int RecipeEnergeticGraphiteToStrangeMatter;
         public static int RecipeEnergeticGraphiteToUnipolarMagnet;
+        public static int RecipeEnergeticGraphiteToFireIce;
 
         internal static void AssignRuntimeIds(BepInEx.Logging.ManualLogSource logger)
         {
-            int itemId = FindMaxId(LDB.items?.dataArray);
+            int itemId = ProtoGameAdapter.FindMaxProtoId(LDB.items?.dataArray);
             Helium = ++itemId;
 
             if (Helium > ItemProto.kMaxProtoId)
@@ -48,38 +52,25 @@ namespace RecipeRebalance
                     $"RecipeRebalance: mod item ID {Helium} exceeds ItemProto.kMaxProtoId ({ItemProto.kMaxProtoId}).");
             }
 
-            int recipeId = FindMaxId(LDB.recipes?.dataArray);
-            RecipeStoneToIronOre = ++recipeId;
-            RecipeStoneToCopperOre = ++recipeId;
-            RecipeStoneToSiliconOre = ++recipeId;
-            RecipeStoneToTitaniumOre = ++recipeId;
-            RecipeStoneToCoal = ++recipeId;
-            RecipeStoneToKimberlite = ++recipeId;
-            RecipeStoneToFractalSilicon = ++recipeId;
-            RecipeHeliumToEnergeticGraphite = ++recipeId;
-            RecipeEnergeticGraphiteToStone = ++recipeId;
-            RecipeEnergeticGraphiteToStrangeMatter = ++recipeId;
-            RecipeEnergeticGraphiteToUnipolarMagnet = ++recipeId;
+            int recipeId = ProtoGameAdapter.FindMaxProtoId(LDB.recipes?.dataArray);
+            var recipeIds = ProtoIdAllocator.AssignSequentialIds(recipeId, FusionChainCatalog.TotalModRecipeCount);
+            RecipeStoneToIronOre = recipeIds[0];
+            RecipeStoneToCopperOre = recipeIds[1];
+            RecipeStoneToSiliconOre = recipeIds[2];
+            RecipeStoneToTitaniumOre = recipeIds[3];
+            RecipeStoneToCoal = recipeIds[4];
+            RecipeStoneToKimberlite = recipeIds[5];
+            RecipeStoneToFractalSilicon = recipeIds[6];
+            RecipeHeliumToEnergeticGraphite = recipeIds[7];
+            RecipeEnergeticGraphiteToStone = recipeIds[8];
+            RecipeEnergeticGraphiteToStrangeMatter = recipeIds[9];
+            RecipeEnergeticGraphiteToUnipolarMagnet = recipeIds[10];
+            RecipeEnergeticGraphiteToFireIce = recipeIds[11];
 
             logger.LogInfo(
                 $"RecipeRebalance: runtime IDs — item {Helium}; " +
-                $"recipes {RecipeStoneToIronOre}–{RecipeEnergeticGraphiteToUnipolarMagnet}");
+                $"recipes {RecipeStoneToIronOre}–{RecipeEnergeticGraphiteToFireIce}");
         }
 
-        private static int FindMaxId(Proto[] protos)
-        {
-            int maxId = 0;
-            if (protos == null)
-                return maxId;
-
-            for (int i = 0; i < protos.Length; i++)
-            {
-                var proto = protos[i];
-                if (proto != null && proto.ID > maxId)
-                    maxId = proto.ID;
-            }
-
-            return maxId;
-        }
     }
 }

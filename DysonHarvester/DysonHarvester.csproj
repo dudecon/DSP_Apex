@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyName>DysonHarvesterPlaceholder</AssemblyName>
+    <AssemblyName>DysonHarvester</AssemblyName>
     <Version>0.0.1</Version>
     <LangVersion>latest</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -12,7 +12,7 @@
 
   <PropertyGroup>
     <!-- Change this to point to your DSP BepInEx/plugins folder if desired -->
-    <DSPPluginsPath>C:\Program Files (x86)\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\\DysonHarvesterPlaceholder</DSPPluginsPath>
+    <DSPPluginsPath>C:\Program Files (x86)\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\DysonHarvester</DSPPluginsPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -72,5 +72,10 @@
     <Message Text="Copied $(TargetFileName) to $(DSPPluginsPath)" Importance="high" />
   </Target>
 
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+  <Import Project="..\Common\DspApex.Common.targets" />
 </Project>
 

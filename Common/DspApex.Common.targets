@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup>
+    <DspApexCommonDll Condition="'$(DspApexCommonDll)' == ''">$(MSBuildThisFileDirectory)bin\$(Configuration)\net472\DspApex.Common.dll</DspApexCommonDll>
+  </PropertyGroup>
+
+  <Target Name="CopyDspApexCommonToPlugins" AfterTargets="CopyToPlugins" Condition="Exists('$(DspApexCommonDll)') and '$(DSPPluginsPath)' != ''">
+    <Copy SourceFiles="$(DspApexCommonDll)" DestinationFolder="$(DSPPluginsPath)" SkipUnchangedFiles="true" />
+    <Message Text="Copied DspApex.Common.dll to $(DSPPluginsPath)" Importance="high" />
+  </Target>
+</Project>

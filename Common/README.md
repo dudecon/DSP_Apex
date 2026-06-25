@@ -4,45 +4,49 @@
 |-------|-------|
 | **Suite #** | — (shared infrastructure) |
 | **Architecture** | [Cross-Cutting Features](../DSP%20Apex%20Architecture.md#cross-cutting-features--design-principles) |
-| **Status** | Not Started |
-| **Progress** | 0% |
-| **Build** | N/A (no project) |
-| **Tests** | — |
+| **Status** | Substantial |
+| **Progress** | ~45% |
+| **Build** | PASS |
+| **Tests** | Exercised via `RecipeRebalance.Tests` (ProtoIdAllocator, ModTestHelpers) |
 
 ## Vision
 
-Shared code, attributes, utilities, and Harmony patches for the suite. Intended to eliminate duplicated bootstrap and proto-registration boilerplate across packs.
+Shared code, attributes, utilities, and Harmony patches for the suite.
 
 ## Completed
 
-- [x] README placeholder
+- [x] `Common.csproj` (`DspApex.Common`)
+- [x] `HarmonyBootstrap` — shared `HasHarmonyPatches` (single definition)
+- [x] `ProtoIdAllocator` — pure ID sequencing
+- [x] `ProtoGameAdapter` — proto ID extraction from game `Proto[]` arrays
+- [x] `ProtoRegistry` — shared LDB item/recipe append helpers
+- [x] `ModTestHelpers` — contiguous ID and grid round-trip assertions
+- [x] `DspApex.Common.targets` — copies `DspApex.Common.dll` to each mod's `DSPPluginsPath` on build
 
 ## In Progress
 
-_None._
+- [ ] Migrate OrbitalRings / OrbitalInfrastructure local `AppendItem` to `ProtoRegistry.AppendItem`
 
 ## To Do
 
-- [ ] Create `Common.csproj` and extract shared `HarmonyBootstrap`
-- [ ] Shared proto registration utilities (overlap with OrbitalRings, OrbitalInfrastructure, ZeroGProduction)
-- [ ] Shared Apex ID registry helpers
-- [ ] Common test helpers and DSP game adapters
-- [ ] Migrate all packs to reference Common
+- [ ] Shared Apex ID registry helpers across packs
+- [ ] Additional game adapters (planet factory context, etc.)
+- [ ] Dedicated `Common.Tests` project (optional; helpers currently tested via consumer packs)
 
 ## Dependencies
 
 | Kind | Packages |
 |------|----------|
-| BepInEx | — |
-| Project | All suite packs (future consumers) |
-
-## Known Issues
-
-- Each mod reimplements identical `HarmonyBootstrap` and plugin boilerplate.
-- No `.cs` files or project exist yet.
+| References | Assembly-CSharp, BepInEx, 0Harmony |
+| Consumers | All 22 mod packs via `ProjectReference` + `DspApex.Common.targets` |
 
 ## Key Files
 
 | File | Role |
 |------|------|
-| `README.md` | This file |
+| `HarmonyBootstrap.cs` | Patch discovery |
+| `ProtoRegistry.cs` | LDB proto registration |
+| `ProtoGameAdapter.cs` | Proto ID extraction |
+| `ProtoIdAllocator.cs` | Pure ID math |
+| `ModTestHelpers.cs` | Shared test assertions |
+| `DspApex.Common.targets` | MSBuild deploy hook for Common.dll |

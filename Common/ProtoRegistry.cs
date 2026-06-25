@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using System.Reflection;
+using BepInEx.Logging;
 
-namespace RecipeRebalance
+namespace DspApex.Common
 {
-    /// <summary>
-    /// Safely append mod protos to LDB tables (cannot use sparse set_Item IDs without resizing).
-    /// </summary>
-    internal static class ProtoRegistry
+    /// <summary>Shared LDB proto append helpers used across suite packs.</summary>
+    public static class ProtoRegistry
     {
         private static readonly FieldInfo ItemIndexField = typeof(ItemProto).GetField(
             "<index>k__BackingField",
@@ -16,22 +15,22 @@ namespace RecipeRebalance
             "index",
             BindingFlags.Public | BindingFlags.Instance);
 
-        internal static void AddItem(ItemProto item)
+        public static void AddItem(ItemProto item, ManualLogSource log = null)
         {
             if (item == null || LDB.items.Exist(item.ID))
                 return;
 
-            int index = Append(LDB.items, item);
+            int index = Append(LDB.items, item, log);
             SetBackingIndex(item, ItemIndexField, index);
         }
 
-        internal static void AddRecipe(RecipeProto recipe)
+        public static void AddRecipe(RecipeProto recipe, ManualLogSource log = null)
         {
             if (recipe == null || LDB.recipes.Exist(recipe.ID))
                 return;
 
             var savedPreTech = recipe.preTech;
-            int index = Append(LDB.recipes, recipe);
+            int index = Append(LDB.recipes, recipe, log);
             SetBackingIndex(recipe, RecipeIndexField, index);
 
             if (savedPreTech != null)
@@ -40,7 +39,25 @@ namespace RecipeRebalance
                 recipe.FindPreTech();
         }
 
-        private static int Append<T>(ProtoSet<T> protoSet, T proto) where T : Proto
+        public static void AppendItem(ItemProto item, ManualLogSource log = null)
+        {
+            if (item == null || LDB.items.Exist(item.ID))
+                return;
+
+            var protoSet = LDB.items;
+            var existing = protoSet.dataArray;
+            int oldLength = existing?.Length ?? 0;
+            protoSet.Init(oldLength + 1);
+
+            for (int i = 0; i < oldLength; i++)
+                protoSet.dataArray[i] = existing[i];
+
+            protoSet.dataArray[oldLength] = item;
+            ItemIndexField?.SetValue(item, oldLength);
+            RebuildItemIndices(protoSet);
+        }
+
+        private static int Append<T>(ProtoSet<T> protoSet, T proto, ManualLogSource log) where T : Proto
         {
             var existing = protoSet.dataArray;
             int oldLength = existing?.Length ?? 0;
@@ -50,11 +67,25 @@ namespace RecipeRebalance
                 protoSet.dataArray[i] = existing[i];
 
             protoSet.dataArray[oldLength] = proto;
-            RebuildIndices(protoSet);
+            RebuildIndices(protoSet, log);
             return oldLength;
         }
 
-        private static void RebuildIndices<T>(ProtoSet<T> protoSet) where T : Proto
+        private static void RebuildItemIndices(ProtoSet<ItemProto> protoSet)
+        {
+            var dataIndices = new Dictionary<int, int>();
+            var array = protoSet.dataArray;
+            for (int i = 0; i < array.Length; i++)
+            {
+                var entry = array[i];
+                if (entry != null)
+                    dataIndices[entry.ID] = i;
+            }
+
+            SetDataIndices(protoSet, dataIndices, null);
+        }
+
+        private static void RebuildIndices<T>(ProtoSet<T> protoSet, ManualLogSource log) where T : Proto
         {
             var dataIndices = new Dictionary<int, int>();
             var array = protoSet.dataArray;
@@ -68,10 +99,13 @@ namespace RecipeRebalance
                 dataIndices[entry.ID] = i;
             }
 
-            SetDataIndices(protoSet, dataIndices);
+            SetDataIndices(protoSet, dataIndices, log);
         }
 
-        private static void SetDataIndices<T>(ProtoSet<T> protoSet, Dictionary<int, int> dataIndices) where T : Proto
+        private static void SetDataIndices<T>(
+            ProtoSet<T> protoSet,
+            Dictionary<int, int> dataIndices,
+            ManualLogSource log) where T : Proto
         {
             for (var type = protoSet.GetType(); type != null; type = type.BaseType)
             {
@@ -85,12 +119,10 @@ namespace RecipeRebalance
                 return;
             }
 
-            Plugin.Log?.LogError("RecipeRebalance: failed to set ProtoSet.dataIndices — LDB lookups will break.");
+            log?.LogError("DspApex.Common.ProtoRegistry: failed to set ProtoSet.dataIndices.");
         }
 
-        private static void SetBackingIndex(object target, FieldInfo field, int index)
-        {
+        private static void SetBackingIndex(object target, FieldInfo field, int index) =>
             field?.SetValue(target, index);
-        }
     }
 }

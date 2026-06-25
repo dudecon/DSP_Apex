@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>ExoticStars</AssemblyName>
+    <Version>0.1.0</Version>
+    <LangVersion>latest</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DSPPluginsPath>C:\Program Files (x86)\Steam\steamapps\common\Dyson Sphere Program\BepInEx\plugins\ExoticStars</DSPPluginsPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp"><HintPath>..\references\Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine"><HintPath>..\references\UnityEngine.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>..\references\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="BepInEx"><HintPath>..\references\BepInEx.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>..\references\0Harmony.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+  <Target Name="CopyToPlugins" AfterTargets="Build">
+    <MakeDir Directories="$(DSPPluginsPath)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(DSPPluginsPath)" />
+    <Message Text="Copied $(TargetFileName) to $(DSPPluginsPath)" Importance="high" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+  </ItemGroup>
+  <Import Project="..\Common\DspApex.Common.targets" />
+</Project>

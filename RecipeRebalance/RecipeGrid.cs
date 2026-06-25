@@ -6,15 +6,13 @@ namespace RecipeRebalance
     internal static class RecipeGrid
     {
         /// <summary>Replicator tab III — dedicated DSP Apex recipe matrix.</summary>
-        internal const int ApexTab = 3;
+        internal const int ApexTab = RecipeGridMath.ApexTab;
 
-        internal const int ColumnCount = 14;
-        internal const int RowCount = 8;
+        internal const int ColumnCount = RecipeGridMath.ColumnCount;
+        internal const int RowCount = RecipeGridMath.RowCount;
 
-        internal static int Encode(int tab, int row, int column)
-        {
-            return tab * 1000 + row * 100 + column;
-        }
+        internal static int Encode(int tab, int row, int column) =>
+            RecipeGridMath.Encode(tab, row, column);
 
         /// <summary>
         /// Returns consecutive slots on the Apex tab (e.g. 3101, 3102, … 3114, 3201, …).
@@ -26,9 +24,7 @@ namespace RecipeRebalance
 
             for (int i = 0; i < count; i++)
             {
-                int row = i / ColumnCount + 1;
-                int column = i % ColumnCount + 1;
-                int grid = Encode(ApexTab, row, column);
+                int grid = RecipeGridMath.GetApexSlotAtIndex(i);
                 slots[i] = grid;
 
                 var existing = FindRecipeAtGrid(grid);
@@ -61,10 +57,10 @@ namespace RecipeRebalance
             return null;
         }
 
-        internal static int DecodeTab(int gridIndex) => gridIndex / 1000;
+        internal static int DecodeTab(int gridIndex) => RecipeGridMath.DecodeTab(gridIndex);
 
-        internal static int DecodeRow(int gridIndex) => (gridIndex % 1000) / 100;
+        internal static int DecodeRow(int gridIndex) => RecipeGridMath.DecodeRow(gridIndex);
 
-        internal static int DecodeColumn(int gridIndex) => gridIndex % 100;
+        internal static int DecodeColumn(int gridIndex) => RecipeGridMath.DecodeColumn(gridIndex);
     }
 }

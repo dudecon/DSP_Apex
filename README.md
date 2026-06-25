@@ -78,16 +78,21 @@ When you finish work in a pack, update its Completed / To Do sections and bump P
 
 ## Implementation Roadmap
 
-Recommended build order (moved from the architecture document):
+Phased build order covering **Common** and packs **0–21**, driven by the documented cross-mod dependency (**MegaStructuresUI → RecipeRebalance**) and suite-wide gaps: shared **Common** library, **megastructure construction loop**, **proxy heuristics**, **config surface**, and broader **test coverage**.
 
-1. **Common** — extract shared Harmony bootstrap, proto registry, game adapters, and test helpers.
-2. **DysonHarvester** — foundational harvesting loop (largely complete).
-3. **OrbitalRings + HandmadeDyson** — real ring entities and manual orbital build placement.
-4. **MegaStructuresUI** — connect Orbital Command allocation to real mod simulation hooks.
-5. **RecipeRebalance tests** — lock fusion chains and grid registration.
-6. **ZeroGProduction + OrbitalInfrastructure** — custom recipes and elevator/station gameplay.
-7. **DysonWeapons + ExoticStars** — after construction loop exists.
-8. **SystemMover** — capstone relocation (last).
+1. **Foundation — Common, RecipeRebalance** — Extract **Common** (Harmony bootstrap, proto registry, game adapters, test helpers) and add **RecipeRebalance** unit tests for fusion chains and grid registration; deduplicate bootstrap across all packs. (MegaStructuresUI already wires to RecipeRebalance via soft `BepInDependency` + `ProjectReference`; tests lock the recipe foundation that UI consumes.)
+
+2. **Core harvesting — DysonHarvester** — Foundational harvesting loop is largely complete; finish BepInEx config, proliferation, and ExoticStars yield hooks.
+
+3. **Orbital construction — OrbitalRings, HandmadeDyson** — Replace proxy heuristics with real ring/shell entities, struts/frames, and manual orbital build placement; close the construction-loop gap these packs share with **MegaStructuresUI**.
+
+4. **Infrastructure & 0G production — OrbitalInfrastructure, ZeroGProduction** — Space elevators, satellite swarms, modular stations; 0G refineries/assemblers with dedicated megastructure recipes, tech unlocks, and config toggles.
+
+5. **UI integration — MegaStructuresUI** — Connect Orbital Command allocation to real structures and cross-mod stats (not formula-only); procedural visuals and enclosed module blueprints once phases 3–4 entities exist.
+
+6. **Weapons, exotics & swarms — DysonWeapons, ExoticStars, DysonSwarm2** — Particle accelerators, transmutation/beams, X-class discovery, expanded swarm roles; requires the construction loop from phases 3–5.
+
+7. **Capstone & peripherals — SystemMover; packs 10–21** — **SystemMover** last (relocation, warper economy, inner-shell warping after Harvester/Weapons/ExoticStars anchors). Peripherals (**TimelineScrubber**, **SelfPropagation**, **TerraformingReGreening**, **FaunaNomads**, **SubterraneanConstruction**, **OrbitalShipyards**, **QuantumLogistics**, **DarkFogInfiltration**, **RamscoopShips**, **RingworldsOrganic**, **ThermalEffects**) layer onto the core loop; wire conceptual synergies and retire hardcoded IDs as each matures.
 
 **Engineering practices:** BepInEx + Harmony; reuse vanilla assets; separate mod packages; test iteratively; maintain compatibility with GalacticScale, Dark Fog, and similar mods.
 

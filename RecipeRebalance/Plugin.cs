@@ -1,6 +1,7 @@
 using System;
 using BepInEx;
 using BepInEx.Logging;
+using DspApex.Common;
 using HarmonyLib;
 
 namespace RecipeRebalance
@@ -21,7 +22,7 @@ namespace RecipeRebalance
 
             foreach (var type in typeof(Plugin).Assembly.GetTypes())
             {
-                if (!HasHarmonyPatches(type))
+                if (!HarmonyBootstrap.HasHarmonyPatches(type))
                     continue;
 
                 try
@@ -44,26 +45,6 @@ namespace RecipeRebalance
                 $"{PluginInfo.PLUGIN_NAME} harmony patches applied ({methodCount} methods, {patchedTypes} types ok, {failedTypes} types failed).");
         }
 
-        private static bool HasHarmonyPatches(Type type)
-        {
-            if (type.GetCustomAttributes(typeof(HarmonyPatch), true).Length > 0)
-                return true;
-
-            const System.Reflection.BindingFlags flags =
-                System.Reflection.BindingFlags.Public
-                | System.Reflection.BindingFlags.NonPublic
-                | System.Reflection.BindingFlags.Static
-                | System.Reflection.BindingFlags.Instance
-                | System.Reflection.BindingFlags.DeclaredOnly;
-
-            foreach (var method in type.GetMethods(flags))
-            {
-                if (method.GetCustomAttributes(typeof(HarmonyPatch), true).Length > 0)
-                    return true;
-            }
-
-            return false;
-        }
     }
 
     public static class PluginInfo
